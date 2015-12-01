@@ -23,7 +23,7 @@ var ObjectProvider;
         find: function (type, id) {
             var objects = _getType(type);
             
-            if (typeof objects[id] === undefined) {
+            if ( !objects[id] ) {
                 throw "No existe el objeto del tipo '" + type + "' con id '" + id + "'";
             }
             
@@ -35,25 +35,25 @@ var ObjectProvider;
         },
         
         persist: function(type, object) {
-            var actualObj = _storage.getItem(prefix + type);
+            var actualObj = _storage[prefix + type];
             
-            if (actualObj === null) {
+            if ( !actualObj ) {
                 actualObj = [];
             } else {
                 actualObj = JSON.parse(actualObj);
             }
             
             actualObj.push(object);
-            _storage.setItem(prefix+type, JSON.stringify(actualObj));
+            _storage[prefix+type] = JSON.stringify(actualObj);
             
         }
     }
     
     // Private methods
     var _getType = function(type) {
-        var objects = _storage.getItem(prefix + type);
+        var objects = _storage[prefix + type];
         
-        if (null === objects) {
+        if ( !objects ) {
             throw "No existe el tipo '" + type + "'";
         }
         
