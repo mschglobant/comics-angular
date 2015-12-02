@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    function LoginController() {
+    function LoginController(AuthenticationService) {
 
         var vm = this;
 
@@ -12,7 +12,6 @@
 
         vm.doLogin = function () {
             //sessionManagement.login(vm.credentials.username, vm.credentials.password);
-            alert ("Logged in!");
         };
     }
 
