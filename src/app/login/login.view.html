@@ -1,6 +1,9 @@
 <div class="jumbotron">
     <div class="container">
         <div class="col-sm-8 col-sm-offset-2">
+
+            <uib-alert ng-if="alert.hasFlash" type="{{alert.type}}" close="alert.close()">{{alert.message}}</uib-alert>
+
             <form name="signinForm" class="form-signin" ng-submit="signinForm.$valid && login.doLogin()" novalidate>
                 <h2 class="form-signin-heading">Please sign in</h2>
                 <label for="inputEmail" class="sr-only">Email address</label>

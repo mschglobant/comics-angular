@@ -1,9 +1,13 @@
 /*global angular */
+
+function UserAuthenticationError(message) {
+    this.name = "UserAuthenticationError";
+    this.message = (message || "");
+}
+UserAuthenticationError.prototype = Error.prototype;
+
 (function () {
     'use strict';
-
-    angular.module('app')
-        .service('authentication', ['userProvider', authenticationService]);
 
     function authenticationService(userProvider) {
         this.login  = _login;
@@ -20,13 +24,13 @@
             var search = userProvider.findBy({ username: username });
 
             if ( search.length != 1 ) {
-                throw "El usuario solicitado no existe";
+                throw new UserAuthenticationError("username not registered in this site");
             }
 
             var user = search[0];
 
             if (password != user.password) {
-                throw "La contraseña especificada es incorrecta";
+                throw new UserAuthenticationError("Incorrect password");
             }
 
             sessionStorage["loggedUser"] = JSON.stringify(user);
@@ -45,5 +49,11 @@
         };
 
     }
+
+
+    // Angular config /////////////////////////////////////////////////////////////////////////////
+    angular.module('app')
+        .service('authentication', ['userProvider', authenticationService]);
+    ///////////////////////////////////////////////////////////////////////////////////////////////
 
 }());
