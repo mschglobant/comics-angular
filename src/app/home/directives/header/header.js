@@ -1,13 +1,13 @@
 (function () {
-    'use strict';
+  'use strict';
 
-    angular.module('comicsHome')
-        .directive('header', function () {
-            return {
-                templateUrl: 'app/home/directives/header/header.html',
-                restrict: 'E',
-                replace: true,
-            }
-        });
+  angular.module('comicsHome')
+    .directive('header', function () {
+      return {
+        templateUrl: 'app/home/directives/header/header.html',
+        restrict: 'E',
+        replace: true,
+      }
+    });
 
 }());

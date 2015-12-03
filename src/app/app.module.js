@@ -2,6 +2,6 @@
 (function () {
     "use strict";
 
-    angular.module("app", ['ngRoute', 'ui.bootstrap', 'comicsHome']);
+    angular.module("app", ['ngRoute', 'ui.bootstrap', 'comicsHome', 'ngStorage']);
 
 }());

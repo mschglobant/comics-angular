@@ -1,59 +1,61 @@
 /*global angular */
 
 function UserAuthenticationError(message) {
-    this.name = "UserAuthenticationError";
-    this.message = (message || "");
+  this.name = "UserAuthenticationError";
+  this.message = (message || "");
 }
 UserAuthenticationError.prototype = Error.prototype;
 
 (function () {
-    'use strict';
+  'use strict';
 
-    function authenticationService(userProvider) {
-        this.login  = _login;
-        this.logout = _logout;
+  function authenticationService(userProvider) {
+    this.login = _login;
+    this.logout = _logout;
 
-        this.isLoggedIn = _isLoggedIn;
-        this.getLoggedUser = _getLoggedUser;
+    this.isLoggedIn = _isLoggedIn;
+    this.getLoggedUser = _getLoggedUser;
 
-        if (!sessionStorage["loggedUser"]) {
-            sessionStorage["loggedUser"] = "";
-        }
-
-        function _login (username, password) {
-            var search = userProvider.findBy({ username: username });
-
-            if ( search.length != 1 ) {
-                throw new UserAuthenticationError("username not registered in this site");
-            }
-
-            var user = search[0];
-
-            if (password != user.password) {
-                throw new UserAuthenticationError("Incorrect password");
-            }
-
-            sessionStorage["loggedUser"] = JSON.stringify(user);
-        }
-
-        function _logout () {
-            sessionStorage["loggedUser"] = "";
-        };
-
-        function _isLoggedIn () {
-            return sessionStorage["loggedUser"] !== "";
-        };
-
-        function _getLoggedUser () {
-            return JSON.parse(sessionStorage["loggedUser"]);
-        };
-
+    if (!sessionStorage["loggedUser"]) {
+      sessionStorage["loggedUser"] = "";
     }
 
+    function _login(username, password) {
+      var search = userProvider.findBy({
+        username: username
+      });
 
-    // Angular config /////////////////////////////////////////////////////////////////////////////
-    angular.module('app')
-        .service('authentication', ['userProvider', authenticationService]);
-    ///////////////////////////////////////////////////////////////////////////////////////////////
+      if (search.length != 1) {
+        throw new UserAuthenticationError("Invalid credentials");
+      }
+
+      var user = search[0];
+
+      if (password != user.password) {
+        throw new UserAuthenticationError("Invalid credentials");
+      }
+
+      sessionStorage["loggedUser"] = JSON.stringify(user);
+    }
+
+    function _logout() {
+      sessionStorage["loggedUser"] = "";
+    };
+
+    function _isLoggedIn() {
+      return sessionStorage["loggedUser"] !== "";
+    };
+
+    function _getLoggedUser() {
+      return JSON.parse(sessionStorage["loggedUser"]);
+    };
+
+  }
+
+
+  // Angular config /////////////////////////////////////////////////////////////////////////////
+  angular.module('app')
+    .service('authentication', ['userProvider', authenticationService]);
+  ///////////////////////////////////////////////////////////////////////////////////////////////
 
 }());

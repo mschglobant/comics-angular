@@ -1,5 +1,5 @@
 (function () {
-    'use strict';
+  'use strict';
 
-    angular.module('comicsHome', ['ui.bootstrap']);
+  angular.module('comicsHome', ['ui.bootstrap']);
 }());

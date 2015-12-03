@@ -1,31 +1,39 @@
 /*global angular */
 (function () {
-    'use strict';
+  'use strict';
 
-    function specificProvider(objectProvider) {
+  function specificProvider(objectProvider) {
 
-        var created = {};
+    var created = {};
 
-        this.createSpecificProviderFor = function (type) {
-            if (!created[type]) {
-                created[type] = {
-                    find: function (id) { return objectProvider.find(type, id); },
-                    findBy: function (expr) { return objectProvider.findBy(type, expr); },
-                    findAll: function () { return objectProvider.findAll(type); },
-                    persist: function (obj) { return objectProvider.persist(type, obj); }
-                };
-            }
-
-            return created[type];
+    this.createSpecificProviderFor = function (type) {
+      if (!created[type]) {
+        created[type] = {
+          find: function (id) {
+            return objectProvider.find(type, id);
+          },
+          findBy: function (expr) {
+            return objectProvider.findBy(type, expr);
+          },
+          findAll: function () {
+            return objectProvider.findAll(type);
+          },
+          persist: function (obj) {
+            return objectProvider.persist(type, obj);
+          }
         };
+      }
 
-    }
+      return created[type];
+    };
+
+  }
 
 
-    // Angular config /////////////////////////////////////////////////////////////////////////////
-    angular.module("app")
-        .service("specificProvider", ['genericProvider', specificProvider]);
-    ///////////////////////////////////////////////////////////////////////////////////////////////
+  // Angular config /////////////////////////////////////////////////////////////////////////////
+  angular.module("app")
+    .service("specificProvider", ['genericProvider', specificProvider]);
+  ///////////////////////////////////////////////////////////////////////////////////////////////
 
 }());
 

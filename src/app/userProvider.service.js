@@ -1,10 +1,10 @@
 /*global angular */
 (function () {
-    'use strict';
+  'use strict';
 
-    angular.module("app")
-        .factory("userProvider", ['specificProvider', function (specificProvider) {
-            return specificProvider.createSpecificProviderFor("user");
+  angular.module("app")
+    .factory("userProvider", ['specificProvider', function (specificProvider) {
+      return specificProvider.createSpecificProviderFor("user");
         }]);
 
 }());
