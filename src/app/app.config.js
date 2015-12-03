@@ -1,18 +1,30 @@
+/*global angular */
 (function () {
     "use strict";
 
-    // Redirect user when tries to access to restricted area and is not loggedin
-    function redirectAnonymousUser($rootScope, $location) {
+    // Redirect to login when user tries access to restricted area and is not authenticated
+    function redirectAnonymousUser($rootScope, $location, authentication) {
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
             // redirect to login page if not logged in and trying to access a restricted page
             var restrictedPage = $.inArray($location.path(), ['/login', '/signup']) === -1;
-            var loggedIn = $rootScope.globals.currentUser;
+            var loggedIn = authentication.isLoggedIn();
             if (restrictedPage && !loggedIn) {
                 $location.path('/login');
             }
         });
     }
 
+    // Redirect to homepage when authenticated user tries to go to login or register page
+    function redirectAuthenticatedUser($rootScope, $location, authentication) {
+        $rootScope.$on('$locationChangeStart', function (event, next, current) {
+            // redirect to login page if not logged in and trying to access a restricted page
+            var restrictedPage = $.inArray($location.path(), ['/login', '/signup']) !== -1;
+            var loggedIn = authentication.isLoggedIn();
+            if (restrictedPage && loggedIn) {
+                $location.path('/');
+            }
+        });
+    }
 
     // Configuration start
     angular
@@ -21,7 +33,7 @@
             function ($routeProvider) {
                 $routeProvider
                     .when('/', {
-                        templateUrl: 'app/home.view.html'
+                        templateUrl: 'app/home/home.view.html'
                     })
                     .when('/login', {
                         templateUrl: 'app/login/login.view.html',
@@ -43,5 +55,7 @@
         .run(['$rootScope', function ($rootScope) {
             $rootScope.globals = {};
         }])
-        .run(['$rootScope', '$location', redirectAnonymousUser]);
+        .run(['$rootScope', '$location', 'authentication', redirectAnonymousUser])
+        .run(['$rootScope', '$location', 'authentication', redirectAuthenticatedUser]);
+
 }());

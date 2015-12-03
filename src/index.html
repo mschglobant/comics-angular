@@ -109,7 +109,7 @@
         <![endif]-->
     </head>
     <body ng-app="app">
-        <div class="" ng-view>
+        <div ng-view>
             <!-- Container View -->
         </div>
 
@@ -124,17 +124,22 @@
             <script src="libs/angular-route/angular-route.js"></script>
             <script src="libs/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 
-
-            <script src="app/sb-admin/sb-admin.module.js"></script>
-            <script src="app/sb-admin/directives/sidebar/sidebar-search/sidebar-search.js"></script>
-            <script src="app/sb-admin/directives/sidebar/sidebar.js"></script>
-            <script src="app/sb-admin/directives/header/header-notification/header-notification.js"></script>
-            <script src="app/sb-admin/directives/header/header.js"></script>
+            <script src="app/home/home.module.js"></script>
+            <script src="app/home/directives/sidebar/sidebar-search/sidebar-search.js"></script>
+            <script src="app/home/directives/sidebar/sidebar.js"></script>
+            <script src="app/home/directives/header/header-notification/header-notification.js"></script>
+            <script src="app/home/directives/header/header.js"></script>
 
             <script src="app/app.module.js"></script>
             <script src="app/app.config.js"></script>
             <script src="app/login/login.controller.js"></script>
             <script src="app/signup/signup.controller.js"></script>
+
+            <script src="app/genericProvider.service.js"></script>
+            <script src="app/specificProvider.service.js"></script>
+            <script src="app/userProvider.service.js"></script>
+            <script src="app/authentication.service.js"></script>
+
 
             <!-- SB Admin 2 -->
             <script src="assets/js/sb-admin-2.js"></script>

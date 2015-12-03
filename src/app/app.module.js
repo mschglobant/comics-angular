@@ -1,6 +1,7 @@
+/*global angular */
 (function () {
     "use strict";
 
-    angular.module("app", ['ngRoute', 'sbAdminApp']);
+    angular.module("app", ['ngRoute', 'comicsHome']);
 
 }());

@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    function LoginController($rootScope, $location, AuthenticationService) {
+    function LoginController($rootScope, $location, authentication) {
 
         var vm = this;
 
@@ -11,12 +11,11 @@
         vm.dataLoading = false;
 
         vm.doLogin = function () {
-            //sessionManagement.login(vm.credentials.username, vm.credentials.password);
-            if (vm.username == "el.manu@gmail.com" && vm.password == "1234") {
-                $rootScope.globals.currentUser = {
-                    username: "el.manu@gmail.com",
-                    password: "1234"
-                }
+            authentication.login(vm.username, vm.password);
+
+            var loggedUser = authentication.getLoggedUser();
+
+            if (loggedUser && loggedUser.username == vm.username) {
 
                 $location.path('/');
 
@@ -26,6 +25,6 @@
 
     angular
         .module("app")
-        .controller("LoginController", ['$rootScope', '$location', LoginController]);
+        .controller("LoginController", ['$rootScope', '$location', 'authentication', LoginController]);
 
 }());

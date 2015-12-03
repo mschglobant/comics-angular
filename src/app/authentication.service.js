@@ -1,91 +1,49 @@
+/*global angular */
 (function () {
     'use strict';
 
-    var login = function (username, password) {
-        var user = objectProvider.find("users", username);
+    angular.module('app')
+        .service('authentication', ['userProvider', authenticationService]);
 
-        if (typeof user != User) {
-            throw "El usuario solicitado no existe";
+    function authenticationService(userProvider) {
+        this.login  = _login;
+        this.logout = _logout;
+
+        this.isLoggedIn = _isLoggedIn;
+        this.getLoggedUser = _getLoggedUser;
+
+        if (!sessionStorage["loggedUser"]) {
+            sessionStorage["loggedUser"] = "";
         }
 
-        if (!user.checkPassword(password)) {
-            throw "La contraseña especificada es incorrecta";
-        }
+        function _login (username, password) {
+            var search = userProvider.findBy({ username: username });
 
-        this.logout();
-        _sessionStorage["loggedUser"] = user;
-    };
-
-    var logout = function () {
-        _sessionStorage["loggedUser"] = null;
-    };
-
-    var isLoggedIn = function () {
-        return _sessionStorage["loggedUser"] !== null;
-    };
-
-    var getLoggedUser = function () {
-        return _sessionStorage["loggedUser"];
-    };
-
-    angular
-        .module('app')
-        .factory('AuthenticationService', function () {
-            var service = {
-                login: login,
-                logout: logout,
-
-                isLoggedIn: isLoggedIn,
-                getLoggedUser: getLoggedUser
+            if ( search.length != 1 ) {
+                throw "El usuario solicitado no existe";
             }
 
-            return service;
-        });
+            var user = search[0];
 
-    function AuthenticationService() {
-        // Private
-        var loggedUser,
-            _objectProvider,
-            _sessionStorage;
+            if (password != user.password) {
+                throw "La contraseña especificada es incorrecta";
+            }
 
-        // Constructor
-        SessionManagement = function (objectProvider, sessionStorage) {
-            _objectProvider = objectProvider;
-            _sessionStorage = sessionStorage;
+            sessionStorage["loggedUser"] = JSON.stringify(user);
+        }
 
-            _sessionStorage["loggedUser"] = null;
+        function _logout () {
+            sessionStorage["loggedUser"] = "";
         };
 
-        // Methods
-        SessionManagement.prototype = {
+        function _isLoggedIn () {
+            return sessionStorage["loggedUser"] !== "";
+        };
 
-            isLoggedIn: function () {
-                return _sessionStorage["loggedUser"] !== null;
-            },
+        function _getLoggedUser () {
+            return JSON.parse(sessionStorage["loggedUser"]);
+        };
 
-            getLoggedUser: function () {
-                return _sessionStorage["loggedUser"];
-            },
-
-            login: function (username, password) {
-                var user = objectProvider.find("users", username);
-
-                if (typeof user != User) {
-                    throw "El usuario solicitado no existe";
-                }
-
-                if (!user.checkPassword(password)) {
-                    throw "La contraseña especificada es incorrecta";
-                }
-
-                this.logout();
-                _sessionStorage["loggedUser"] = user;
-            },
-
-            logout: function () {
-                _sessionStorage["loggedUser"] = null;
-            }
-        }
     }
 
-})();
+}());
