@@ -6,7 +6,6 @@
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
             // redirect to login page if not logged in and trying to access a restricted page
             var restrictedPage = $.inArray($location.path(), ['/login', '/signup']) === -1;
-            console.log($location.path());
             var loggedIn = $rootScope.globals.currentUser;
             if (restrictedPage && !loggedIn) {
                 $location.path('/login');
@@ -35,7 +34,7 @@
                         controllerAs: 'vm'
                     })
                     .when('/404', {
-                        templateUrl: 'app/404.html'
+                        templateUrl: 'app/404.view.html'
                     })
                     .otherwise({
                         redirectTo: '/404'
