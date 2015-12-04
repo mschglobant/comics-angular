@@ -69,7 +69,6 @@
       try {
         currentCollection = getType(type);
       } catch (e) {
-        console.log(e);
         currentCollection = [];
       }
 

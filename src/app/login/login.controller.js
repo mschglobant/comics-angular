@@ -28,11 +28,12 @@
 
       try {
         authentication.login(vm.username, vm.password);
+        $location.path('/');
       } catch (e) {
         if (e instanceof UserAuthenticationError) {
           $scope.alert.notifyError(e.message);
         } else {
-          throw e;
+          $scope.alert.notifyError('an error ocurred. Reload page and try again.');
         }
       }
     };

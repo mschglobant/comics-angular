@@ -51,10 +51,8 @@
           .otherwise({
             redirectTo: '/404'
           });
-            }])
-    .run(['$rootScope', function ($rootScope) {
-      $rootScope.globals = {};
-        }])
+    }])
+
     .run(['$rootScope', '$location', 'authentication', redirectAnonymousUser])
     .run(['$rootScope', '$location', 'authentication', redirectAuthenticatedUser]);
 

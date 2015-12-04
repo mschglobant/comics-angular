@@ -1,33 +1,33 @@
 (function () {
   'use strict';
 
+
+
   angular.module('comicsHome')
-    .directive('sidebar', ['$location', function () {
+    .directive('sidebar', ['$location', function ($location) {
       return {
         templateUrl: 'app/home/directives/sidebar/sidebar.html',
         restrict: 'E',
         replace: true,
         scope: {},
         controller: function ($scope) {
-          $scope.selectedMenu = 'dashboard';
-          $scope.collapseVar = 0;
-          $scope.multiCollapseVar = 0;
 
-          $scope.check = function (x) {
+          function MenuItem(title, path) {
+            this.title = title;
+            this.path = path;
+          }
+          MenuItem.prototype.isActive = function () {
+            return this.path == $location.path();
+          }
 
-            if (x == $scope.collapseVar)
-              $scope.collapseVar = 0;
-            else
-              $scope.collapseVar = x;
-          };
+          $scope.menuItems = [
+            new MenuItem("Home", "/"),
+            new MenuItem("Genres", "/genres"),
+            new MenuItem("Editions", "/editions"),
+            new MenuItem("News", "/news"),
+            new MenuItem("Characters", "/characters"),
+          ];
 
-          $scope.multiCheck = function (y) {
-
-            if (y == $scope.multiCollapseVar)
-              $scope.multiCollapseVar = 0;
-            else
-              $scope.multiCollapseVar = y;
-          };
         }
       }
         }]);
