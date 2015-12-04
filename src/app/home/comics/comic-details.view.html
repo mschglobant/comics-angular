@@ -1,0 +1,100 @@
+<div class="row">
+  <section class="share-buttons">
+
+  </section>
+
+  <section class="comic-info">
+    <div class="row">
+      <div class="col-md-4">
+
+        <div class="thumbnail">
+          <img ng-src="{{comic.imageUrl}}" alt="Comic's cover">
+        </div>
+
+        <div class="title-meta text-center">
+          <span>144 printed pages</span>
+          <span>{{comic.year}}</span>
+        </div>
+
+      </div>
+
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-10">
+            <h2>{{ comic.title }}</h2>
+            <h5 class="subheader">Issue #32</h5>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <div class="col-md-12">
+            <div class="title-meta">
+              <span>
+               <a class="alt-dark" ng-href="#/publisher/{{comic.publisher.id}}">{{ comic.publisher.name }}</a>
+             </span>
+
+              <span>
+               ENGLISH
+             </span>
+
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <span><strong>Authors |</strong></span>
+
+            <span ng-repeat="author in comic.authors">
+             <a class="artist alt-dark" ng-href="/artist/1329484203">{{author.name}}</a>,
+            </span>
+          </div>
+
+          <div class="col-md-12">
+            <span><strong>Ilustrators |</strong></span>
+
+            <span ng-repeat="illustrator in comic.illustrators">
+                <a class="artist alt-dark" ng-href="/artist/1329484203">{{illustrator.name}}</a>,
+              </span>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <div class="col-md-12">
+            <span><strong>Similar |</strong></span>
+
+            <span ng-repeat="illustrator in comic.illustrators">
+              <a class="artist alt-dark" ng-href="/artist/1329484203">{{illustrator.name}}</a>,
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="row">
+        <div class="col-md-5">
+          <form action="/borrow" method="post">
+            <input name="titleId" value="11337367" type="hidden">
+            <input name="contentId" value="11337367" type="hidden">
+            <button type="submit" class="btn btn-default" >Préstamo
+            </button>
+            <div style="display: none;">
+              <input type="hidden" name="_sourcePage" value="WF0BAXWIRBKwR2EQWdjYkVx6wAq_W8Diu2HDoOgUkfIy5ej4NCINgg==">
+              <input type="hidden" name="__fp" value="bjOimUab-ak=">
+            </div>
+          </form>
+        </div>
+
+        <div class="row-md-7">
+
+        </div>
+      </div>
+    </div>
+
+
+</div>
+</section>
+
+<section class="similar-comics">
+
+</section>
+</div>

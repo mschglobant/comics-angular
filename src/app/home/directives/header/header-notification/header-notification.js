@@ -12,7 +12,8 @@
             authentication.logout();
             $location.path('/login');
           }
-        }]
+        }],
+        controllerAs: 'vm'
       }
     });
 

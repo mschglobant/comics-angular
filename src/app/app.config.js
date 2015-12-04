@@ -33,7 +33,9 @@
             function ($routeProvider) {
         $routeProvider
           .when('/', {
-            templateUrl: 'app/home/home.view.html'
+            templateUrl: 'app/home/home.view.html',
+            controller: 'HomeController',
+            controllerAs: 'vm'
           })
           .when('/login', {
             templateUrl: 'app/login/login.view.html',
@@ -45,6 +47,11 @@
             controller: 'SignupController',
             controllerAs: 'vm'
           })
+          .when('/comics/:id', {
+            templateUrl: 'app/home/comics/comic-details.view.html',
+            controller: 'ComicsDetails',
+            controllerAs: 'vm'
+          })
           .when('/404', {
             templateUrl: 'app/404.view.html'
           })
@@ -53,7 +60,7 @@
           });
     }])
 
-    .run(['$rootScope', '$location', 'authentication', redirectAnonymousUser])
+  .run(['$rootScope', '$location', 'authentication', redirectAnonymousUser])
     .run(['$rootScope', '$location', 'authentication', redirectAuthenticatedUser]);
 
 }());
