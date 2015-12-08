@@ -1,19 +1,19 @@
 <div class="row">
   <section class="share-buttons">
-
   </section>
 
-  <section class="comic-info">
+ <i ng-show="!vm.comic" class="glyphicon glyphicon-lg glyphicon-refresh glyphicon-spin"></i>
+  <section ng-show="vm.comic" class="comic-info">
     <div class="row">
       <div class="col-md-4">
 
         <div class="thumbnail">
-          <img ng-src="{{comic.imageUrl}}" alt="Comic's cover">
+          <img ng-src="{{vm.comic.imageUrl}}" alt="Comic's cover">
         </div>
 
         <div class="title-meta text-center">
           <span>144 printed pages</span>
-          <span>{{comic.year}}</span>
+          <span>{{vm.comic.year | uppercase }}</span>
         </div>
 
       </div>
@@ -21,7 +21,7 @@
       <div class="col-md-8">
         <div class="row">
           <div class="col-md-10">
-            <h2>{{ comic.title }}</h2>
+            <h2>{{ vm.comic.title }}</h2>
             <h5 class="subheader">Issue #32</h5>
           </div>
         </div>
@@ -30,7 +30,7 @@
           <div class="col-md-12">
             <div class="title-meta">
               <span>
-               <a class="alt-dark" ng-href="#/publisher/{{comic.publisher.id}}">{{ comic.publisher.name }}</a>
+               <a class="alt-dark" ng-href="#/publisher/{{vm.comic.publisher.id}}">{{ vm.comic.publisher.name }}</a>
              </span>
 
               <span>
@@ -43,7 +43,7 @@
           <div class="col-md-12">
             <span><strong>Authors |</strong></span>
 
-            <span ng-repeat="author in comic.authors">
+            <span ng-repeat="author in vm.comic.authors">
              <a class="artist alt-dark" ng-href="/artist/1329484203">{{author.name}}</a>,
             </span>
           </div>
@@ -51,7 +51,7 @@
           <div class="col-md-12">
             <span><strong>Ilustrators |</strong></span>
 
-            <span ng-repeat="illustrator in comic.illustrators">
+            <span ng-repeat="illustrator in vm.comic.illustrators">
                 <a class="artist alt-dark" ng-href="/artist/1329484203">{{illustrator.name}}</a>,
               </span>
           </div>
@@ -61,7 +61,7 @@
           <div class="col-md-12">
             <span><strong>Similar |</strong></span>
 
-            <span ng-repeat="illustrator in comic.illustrators">
+            <span ng-repeat="illustrator in vm.comic.illustrators">
               <a class="artist alt-dark" ng-href="/artist/1329484203">{{illustrator.name}}</a>,
             </span>
           </div>
@@ -90,6 +90,7 @@
       </div>
     </div>
 
+    {{ vm.comic.description }}
 
 </div>
 </section>

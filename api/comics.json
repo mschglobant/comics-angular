@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "title": "Batman/Superman Vol. 1: Cross World",
     "publisher": "DC Comics",
     "year": "2014",
@@ -8,11 +8,11 @@
     "description": "The Dark Knight and the Man of Steel are close friends in the modern day-but the two weren't always such close allies. Discover how two of the World's Finest Super Heroes met for the first time in the New 52, and the mysterious adventure that takes them to a whole new world-the world of Earth-2! The heroes of the main DC Universe meet their Earth-2 counterparts for the first time! Collects BATMAN #1-4 and JUSTICE LEAGUE #23.1: DARKSEID."
   },
   {
-    "id": 1,
+    "id": "2",
     "title": "Minions",
     "publisher": "TITAN COMICS",
     "year": "2015",
     "imageUrl": "https://d2snwnmzyr8jue.cloudfront.net/trj_9781782768128_270.jpeg",
     "description": "From the creators of Despicable Me comes a brand new movie adventure in yellow… Minions. This fresh new comic featuring the stars of the upcoming new movie brings together a collection of hilarious comic stories featuring everyone's favourite yellow, banana-loving henchmen."
-  },
+  }
 ]

@@ -416,6 +416,10 @@ footer {
 
 /* Glyphicon  animado */
 
+.glyphicon-lg {
+    font-size: 1.2em;
+}
+
 .fa-spin-custom, .glyphicon-spin {
     -webkit-animation: spin 1000ms infinite linear;
     animation: spin 1000ms infinite linear;
