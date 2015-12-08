@@ -3,8 +3,8 @@
   'use strict';
 
   angular.module("app")
-    .factory("genericProvider", ['$filter', '$http', function ($filter, $http) {
-      return new ObjectProvider(window.localStorage, $filter('filter'), $http);
+    .factory("genericProvider", ['$filter', '$http', '$q', '$timeout', function ($filter, $http, $q, $timeout) {
+      return new ObjectProvider(window.localStorage, $filter('filter'), $http, $q, $timeout);
     }]);
 
   //////////
@@ -18,72 +18,107 @@
   // Dependecies
   var storage,
     filter,
-    $http;
+    $http,
+    $q,
+    $timeout;
 
   // Constructor
-  var ObjectProvider = function (staticStorage, filterParam, http) {
+  var ObjectProvider = function (staticStorage, filterParam, http, q, timeout) {
     if (!staticStorage) {
       staticStorage = window.localStorage;
     }
     storage = staticStorage;
     filter = filterParam;
     $http = http;
+    $q = q;
+    $timeout = timeout;
   };
 
   // Private methods
-  var getType = function (type) {
-    var objects = loadedObjects[type];
+  var init = function (type) {
+    var deferred = $q.defer();
 
-    if (!objects) {
-      var enstorage = storage[prefix + type];
+    if (storage[prefix + type]) {
 
-      if (!enstorage) {
-        // TODO: Cargar desde API json --> o ver la forma de hacerlo al inicializar
-        throw "No existe el tipo '" + type + "'";
+      deferred.resolve(storage[prefix + type]);
+
+    } else {
+
+      $http({
+        method: 'GET',
+        url: '../api/' + type + 's.json'
+      }).then(successCallback, errorCallback);
+
+      ///////
+      function successCallback(response) {
+        storage[prefix + type] = JSON.stringify(response.data);
+        deferred.resolve(storage[prefix + type]);
       }
 
-      objects = JSON.parse(enstorage);
+      function errorCallback(response) {
+        deferred.reject("Failed to fetch " + type);
+      }
+
     }
 
-    return objects;
+    return deferred.promise;
+  }
+
+  var getType = function (type) {
+
+    return init(type).then(loadInMemory).then(returnCachedObject);
+
+    ///////
+    function loadInMemory() {
+
+      if (!loadedObjects[type]) {
+        loadedObjects[type] = JSON.parse(storage[prefix + type]);
+      }
+
+      return loadedObjects[type];
+
+    }
+
+    function returnCachedObject() {
+      var deferred = $q.defer();
+
+      // Espera ficticia de hasta 2 segundos
+      $timeout(function () {
+        deferred.resolve(loadedObjects[type])
+      }, Math.floor(Math.random() * 2000))
+
+      return deferred.promise;
+    }
+
   };
 
   // Public methods
   ObjectProvider.prototype = {
 
-    init: function (type) {
-      if (storage[prefix + type]) {
-        return;
-      }
-      return $http({
-        method: 'GET',
-        url: '../api/' + type + 's.json'
-      }).then(successCallback, errorCallback);
-
-      function successCallback(response) {
-        loadedObjects[type] = response.data;
-        storage[prefix + type] = JSON.stringify(response.data);
-      }
-
-      function errorCallback(response) {
-        $log.error("Failed to fetch " + type);
-      }
-    },
+    init: init,
 
     find: function (type, id) {
-      var objects = getType(type);
 
-      if (!objects[id]) {
-        throw "No existe el objeto del tipo '" + type + "' con id '" + id + "'";
+      return getType(type).then(success);
+
+      function success(objects) {
+        if (!objects[id]) {
+          throw "No existe el objeto del tipo '" + type + "' con id '" + id + "'";
+        }
+
+        return objects[id];
       }
 
-      return objects[id];
     },
 
     findBy: function (type, expr) {
-      var currentCollection = getType(type);
 
-      return filter(currentCollection, expr, true);
+      return getType(type).then(success);
+
+      ///////
+      function success(currentCollection) {
+        return filter(currentCollection, expr, true);
+      }
     },
 
     findAll: function (type) {
@@ -91,19 +126,17 @@
     },
 
     persist: function (type, object) {
-      var currentCollection;
 
-      // Obtengo los elementos actuales de la colleccion o creo una nueva
-      try {
-        currentCollection = getType(type);
-      } catch (e) {
-        currentCollection = [];
+      return getType(type).then(success, error);
+
+      ///////
+      function success(currentCollection) {
+        currentCollection.push(object);
+
+        loadedObjects[type] = currentCollection;
+        storage[prefix + type] = JSON.stringify(currentCollection);
       }
 
-      currentCollection.push(object);
-
-      loadedObjects[type] = currentCollection;
-      storage[prefix + type] = JSON.stringify(currentCollection);
     }
   };
 

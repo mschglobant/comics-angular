@@ -23,21 +23,25 @@ UserAuthenticationError.prototype = Error.prototype;
     }
 
     function _login(username, password) {
-      var search = userProvider.findBy({
+
+      return userProvider.findBy({
         username: username
-      });
+      }).then(function (search) {
+        if (search.length != 1) {
+          throw new UserAuthenticationError("Invalid credentials");
+        }
 
-      if (search.length != 1) {
-        throw new UserAuthenticationError("Invalid credentials");
-      }
+        var user = search[0];
 
-      var user = search[0];
+        if (password != user.password) {
+          throw new UserAuthenticationError("Invalid credentials");
+        }
 
-      if (password != user.password) {
-        throw new UserAuthenticationError("Invalid credentials");
-      }
+        sessionStorage["loggedUser"] = JSON.stringify(user);
 
-      sessionStorage["loggedUser"] = JSON.stringify(user);
+        return user;
+      }, function (r) { debugger;});
+
     }
 
     function _logout() {
@@ -53,11 +57,12 @@ UserAuthenticationError.prototype = Error.prototype;
     };
 
     function userExist(user) {
-      var search = userProvider.findBy({
+      return userProvider.findBy({
         username: username
+      }).then(function (search) {
+        return search.length > 0;
       });
 
-      return search.length > 0;
     }
 
   }
