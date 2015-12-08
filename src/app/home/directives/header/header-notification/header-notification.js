@@ -8,7 +8,44 @@
         restrict: 'E',
         replace: true,
         controller: ['$scope', '$location', 'authentication', function ($scope, $location, authentication) {
-          $scope.logout = function () {
+          var vm = this;
+
+          vm.user = {
+            showName: showName,
+            isAdmin: function () {
+              if (authentication.isLoggedIn()) {
+                var user = authentication.getLoggedUser();
+                return user.role == "admin";
+              }
+              return false;
+            }
+          }
+
+          vm.session = {
+            user: vm.user,
+            isLoggedIn: isLoggedIn,
+            logout: logout
+          }
+
+          function showName() {
+            if (authentication.isLoggedIn()) {
+              var user = authentication.getLoggedUser();
+
+              if (user.firstName) {
+                return user.firstName + ' ' + user.lastName;
+              } else {
+                return user.username;
+              }
+            }
+
+            return "Sign In";
+          }
+
+          function isLoggedIn() {
+            return authentication.isLoggedIn();
+          }
+
+          function logout() {
             authentication.logout();
             $location.path('/login');
           }

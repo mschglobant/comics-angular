@@ -127,7 +127,7 @@
 
     persist: function (type, object) {
 
-      return getType(type).then(success, error);
+      return getType(type).then(success);
 
       ///////
       function success(currentCollection) {

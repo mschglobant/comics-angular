@@ -7,18 +7,17 @@
         restrict: 'AE',
         require: 'ngModel',
         link: function (scope, elem, attr, model) {
-          model.$asyncValidators.usernameExists = function () {
-            var defer = $q.defer();
+          model.$asyncValidators.usernameExists = function (modelValue, viewValue) {
 
-            $timeout(function () {
+            return authentication
+              .userExist(elem.val())
+              .then(function (exist) {
+                if (exist) {
+                  return $q.reject();
+                }
+                return true;
+              });
 
-              var exist = authentication.userExist(elem.val());
-
-              model.$setValidity('usernameExists', !exist);
-              defer.resolve(exist ? undefined : elem.val());
-            }, 1000);
-
-            return defer.promise;
           };
         }
       }

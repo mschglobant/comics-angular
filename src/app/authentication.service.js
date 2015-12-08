@@ -58,7 +58,7 @@ UserAuthenticationError.prototype = Error.prototype;
 
     function userExist(user) {
       return userProvider.findBy({
-        username: username
+        username: user
       }).then(function (search) {
         return search.length > 0;
       });

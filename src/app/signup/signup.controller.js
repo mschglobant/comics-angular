@@ -14,18 +14,17 @@
     vm.register = function () {
       vm.dataLoading = true;
 
-      $timeout(function () {
-
-        vm.dataLoading = false;
-
-        try {
-          userProvider.persist(vm.user);
+      userProvider
+        .persist(vm.user)
+        .then(function () {
           $location.path('/login');
-        } catch (e) {
+        })
+        .catch(function () {
           $scope.alert.notifyError("An error ocurred. Reload page an try again.");
-        }
-
-      }, 2000);
+        })
+        .finally(function () {
+          vm.dataLoading = false;
+        });
 
     };
 

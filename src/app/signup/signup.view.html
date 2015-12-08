@@ -6,36 +6,38 @@
     <h2>Register</h2>
     <form name="form" ng-submit="vm.register()" role="form" novalidate>
 
-      <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
+      <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && !form.firstName.$valid }">
         <label for="firstName">First name</label>
         <input type="text" name="firstName" id="firstName" class="form-control" ng-model="vm.user.firstName" autofocus/>
       </div>
 
-      <div class="form-group" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
+      <div class="form-group" ng-class="{ 'has-error': form.lastName.$dirty && !form.lastName.$valid }">
         <label for="lastName">Last name</label>
         <input type="text" name="lastName" id="Text1" class="form-control" ng-model="vm.user.lastName" />
       </div>
 
-      <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && ( form.email.$error.required || form.email.$error.email ) }">
+      <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && !form.email.$valid }">
         <label for="email">Email address</label>
-        <input type="email" name="email" id="email" class="form-control" ng-model="vm.user.email" required />
+        <input type="email" name="email" id="email" class="form-control" ng-model="vm.user.email" ng-model-options="{ updateOn: 'blur' }" required />
         <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">Email is required</span>
         <span ng-show="form.email.$dirty && form.email.$error.email" class="help-block">Enter valid email address</span>
       </div>
 
-      <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && !form.$pending && !form.username.$valid, 'has-feedback': form.$pending.usernameExists }">
+      <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && !form.username.$pending && !form.username.$valid, 'has-feedback': form.username.$pending.usernameExists }">
         <label for="username">Username</label>
-        <input type="text" name="username" id="username" class="form-control" ng-model="vm.user.username" ng-minlength="7" ng-pattern="/^[a-zA-Z0-9]*$/" ng-model-options="{ updateOn: 'blur' }" username-available ng-model-options="{ updateOn: 'blur' }" required />
-        <i ng-show="form.$pending.usernameExists" class="glyphicon glyphicon-refresh glyphicon-spin form-control-feedback"></i>
+        <input type="text" name="username" id="username" class="form-control" ng-model="vm.user.username" ng-pattern="/^[a-zA-Z0-9]*$/" ng-model-options="{ updateOn: 'blur' }" username-available ng-model-options="{ updateOn: 'blur' }" required />
+        <i ng-show="form.username.$pending.usernameExists" class="glyphicon glyphicon-refresh glyphicon-spin form-control-feedback"></i>
         <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
-        <span ng-show="form.username.$error.minlength" class="help-block">Username can't be shorter than 7 characters</span>
-        <span ng-show="form.username.$error.pattern" class="help-block">Username only can contain alphanumeric characters</span>
+        <span ng-show="form.username.$dirty && form.username.$error.pattern" class="help-block">Username only can contain alphanumeric characters</span>
+        <span ng-show="form.username.$dirty && form.username.$error.usernameExists" class="help-block">Username already taken!</span>
       </div>
 
-      <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+      <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && !form.password.$valid }">
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" class="form-control" ng-model="vm.user.password" required />
+        <input type="password" name="password" id="password" class="form-control" ng-model="vm.user.password" ng-minlength="7" ng-pattern="/^[a-zA-Z0-9]*$/" ng-model-options="{ updateOn: 'blur' }" required />
         <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+        <span ng-show="form.password.$error.minlength" class="help-block">Password can't be shorter than 7 characters</span>
+        <span ng-show="form.password.$error.pattern" class="help-block">Password only can contain alphanumeric characters</span>
       </div>
 
       <div class="form-group" ng-class="{ 'has-error': form.password2.$dirty && !form.password2.$valid }">
@@ -46,7 +48,7 @@
       </div>
 
       <div class="form-actions">
-        <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Register</button>
+        <button type="submit" ng-disabled="form.$invalid || form.$pending || vm.dataLoading" class="btn btn-primary">Register</button>
         <img ng-if="vm.dataLoading" src="assets/images/loading.gif" />
         <a href="#/login" class="btn btn-link">Cancel</a>
       </div>
