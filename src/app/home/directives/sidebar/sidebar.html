@@ -1,12 +1,20 @@
 <div class="navbar-default sidebar" role="navigation">
   <div class="sidebar-nav navbar-collapse">
+
+    <sidebar-search></sidebar-search>
+
+    <h3>Top Searches</h3>
+    <ol>
+      <li>Batman</li>
+      <li>Superman</li>
+      <li>Asterix</li>
+    </ol>
+
     <ul class="nav in" id="side-menu">
-
-      <sidebar-search></sidebar-search>
-
       <li ng-repeat="item in menuItems" ng-class="{active: item.isActive()}">
         <a ng-href="#{{ item.path }}"><i class="fa fa-angle-right fa-fw"></i> {{item.title }}</a>
       </li>
+    </ul>
 
   </div>
   <!-- /.sidebar-collapse -->

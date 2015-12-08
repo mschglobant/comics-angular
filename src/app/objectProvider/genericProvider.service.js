@@ -2,6 +2,13 @@
 (function () {
   'use strict';
 
+  angular.module("app")
+    .factory("genericProvider", ['$filter', '$http', function ($filter, $http) {
+      return new ObjectProvider(window.localStorage, $filter('filter'), $http);
+    }]);
+
+  //////////
+
   // Config
   var prefix = "comics_";
 
@@ -9,16 +16,18 @@
   var loadedObjects = {};
 
   // Dependecies
-  var storage;
-  var filter;
+  var storage,
+    filter,
+    $http;
 
   // Constructor
-  var ObjectProvider = function (staticStorage, filterParam) {
+  var ObjectProvider = function (staticStorage, filterParam, http) {
     if (!staticStorage) {
       staticStorage = window.localStorage;
     }
     storage = staticStorage;
     filter = filterParam;
+    $http = http;
   };
 
   // Private methods
@@ -41,6 +50,25 @@
 
   // Public methods
   ObjectProvider.prototype = {
+
+    init: function (type) {
+      if (storage[prefix + type]) {
+        return;
+      }
+      return $http({
+        method: 'GET',
+        url: '../api/' + type + 's.json'
+      }).then(successCallback, errorCallback);
+
+      function successCallback(response) {
+        loadedObjects[type] = response.data;
+        storage[prefix + type] = JSON.stringify(response.data);
+      }
+
+      function errorCallback(response) {
+        $log.error("Failed to fetch " + type);
+      }
+    },
 
     find: function (type, id) {
       var objects = getType(type);
@@ -78,13 +106,5 @@
       storage[prefix + type] = JSON.stringify(currentCollection);
     }
   };
-
-
-  // Angular config /////////////////////////////////////////////////////////////////////////////
-  angular.module("app")
-    .factory("genericProvider", ['$filter', function ($filter) {
-      return new ObjectProvider(window.localStorage, $filter('filter'));
-    }]);
-  ///////////////////////////////////////////////////////////////////////////////////////////////
 
 }());

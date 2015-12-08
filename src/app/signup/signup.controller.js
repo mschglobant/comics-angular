@@ -2,6 +2,10 @@
 (function () {
   'use strict';
 
+  angular
+    .module("app")
+    .controller("SignupController", ['$scope', '$location', '$timeout', 'userProvider', SignupController]);
+
   function SignupController($scope, $location, $timeout, userProvider, flashService) {
     var vm = this;
 
@@ -41,7 +45,4 @@
     };
   }
 
-  angular
-    .module("app")
-    .controller("SignupController", ['$scope', '$location', '$timeout', 'userProvider', SignupController]);
 }());

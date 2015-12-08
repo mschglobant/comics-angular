@@ -1,7 +1,11 @@
 (function () {
   "use strict";
 
-  function LoginController($location, $scope, authentication) {
+  angular
+    .module("app")
+    .controller("LoginController", ['$location', '$scope', '$timeout', 'authentication', LoginController]);
+
+  function LoginController($location, $scope, $timeout, authentication) {
 
     var vm = this;
 
@@ -26,21 +30,22 @@
 
     vm.doLogin = function () {
 
-      try {
-        authentication.login(vm.username, vm.password);
-        $location.path('/');
-      } catch (e) {
-        if (e instanceof UserAuthenticationError) {
-          $scope.alert.notifyError(e.message);
-        } else {
-          $scope.alert.notifyError('an error ocurred. Reload page and try again.');
+      vm.dataLoading = true;
+      $timeout(function () {
+        vm.dataLoading = false;
+        try {
+          authentication.login(vm.username, vm.password);
+          $location.path('/');
+        } catch (e) {
+          if (e instanceof UserAuthenticationError) {
+            $scope.alert.notifyError(e.message);
+          } else {
+            $scope.alert.notifyError('an error ocurred. Reload page and try again.');
+          }
         }
-      }
+      }, 1500);
+
     };
   }
-
-  angular
-    .module("app")
-    .controller("LoginController", ['$location', '$scope', 'authentication', LoginController]);
 
 }());

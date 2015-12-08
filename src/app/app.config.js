@@ -40,7 +40,7 @@
           .when('/login', {
             templateUrl: 'app/login/login.view.html',
             controller: 'LoginController',
-            controllerAs: 'login'
+            controllerAs: 'vm'
           })
           .when('/signup', {
             templateUrl: 'app/signup/signup.view.html',

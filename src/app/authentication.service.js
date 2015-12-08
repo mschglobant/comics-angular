@@ -16,6 +16,8 @@ UserAuthenticationError.prototype = Error.prototype;
     this.isLoggedIn = _isLoggedIn;
     this.getLoggedUser = _getLoggedUser;
 
+    this.userExist = userExist;
+
     if (!sessionStorage["loggedUser"]) {
       sessionStorage["loggedUser"] = "";
     }
@@ -49,6 +51,14 @@ UserAuthenticationError.prototype = Error.prototype;
     function _getLoggedUser() {
       return JSON.parse(sessionStorage["loggedUser"]);
     };
+
+    function userExist(user) {
+      var search = userProvider.findBy({
+        username: username
+      });
+
+      return search.length > 0;
+    }
 
   }
 
