@@ -5,7 +5,17 @@
     "publisher": "DC Comics",
     "year": "2014",
     "genre": 1,
-    "score": 5,
+    "rate": {
+      "totalUsers": 38,
+      "percentages": {
+        "5": 10,
+        "4": 23,
+        "3": 3,
+        "2": 2,
+        "1": 0
+      }
+    },
+    "avgRate": 5,
     "imageUrl": "https://d2snwnmzyr8jue.cloudfront.net/dcc_t1219400018301_270.jpeg",
     "description": "The Dark Knight and the Man of Steel are close friends in the modern day-but the two weren't always such close allies. Discover how two of the World's Finest Super Heroes met for the first time in the New 52, and the mysterious adventure that takes them to a whole new world-the world of Earth-2! The heroes of the main DC Universe meet their Earth-2 counterparts for the first time! Collects BATMAN #1-4 and JUSTICE LEAGUE #23.1: DARKSEID."
   },
@@ -15,7 +25,7 @@
     "publisher": "TITAN COMICS",
     "year": "2015",
     "genre": 2,
-    "score": 3,
+    "avgRate": 3,
     "imageUrl": "https://d2snwnmzyr8jue.cloudfront.net/trj_9781782768128_270.jpeg",
     "description": "From the creators of Despicable Me comes a brand new movie adventure in yellow… Minions. This fresh new comic featuring the stars of the upcoming new movie brings together a collection of hilarious comic stories featuring everyone's favourite yellow, banana-loving henchmen."
   },
@@ -25,7 +35,7 @@
     "publisher": "DC COMICS",
     "year": "2015",
     "genre": 1,
-    "score": 2,
+    "avgRate": 2,
     "imageUrl": "https://d2snwnmzyr8jue.cloudfront.net/dcc_t1436800018301_270.jpeg",
     "description": "The prequel to the best-selling game BATMAN: ARKHAM KNIGHT! The Joker is dead. Arkham City is closed. As a new day begins, Bruce Wayne finds himself in devastating pain, recovering from his injuries and questioning whether his role as Batman is still necessary to the city's survival. But as the sun rises in Gotham City, dangerous new threats emerge from the shadows...and the Arkham Knight is just beginning. Don't miss this in-continuity prequel comic set prior to the events of the brand-new video game Batman: Arkham Knight!"
   },
@@ -34,7 +44,7 @@
     "title": "Peanuts Vol. 4",
     "publisher": "BOOM! STUDIOS",
     "year": "2014",
-    "genre": 2,
+    "avgRate": 2,
     "imageUrl": "https://d2snwnmzyr8jue.cloudfront.net/trj_9781613982815_270.jpeg",
     "description": "New PEANUTS adventures, perfect for you and your Sweet Babboo! It's time to hop atop your doghouse biplane and escape into the wonderful world of legendary cartoonist Charles M. Schulz with brand-new adventures from an all-star lineup of writers and artists, and classic strips by Schulz himself. Featuring Charlie Brown and the whole Peanuts gang, this timeless collection of humor and imagination is sure to help you finally kick that football or take to the skies and defeat the Red Baron once and for all."
   },
@@ -44,7 +54,7 @@
     "publisher": "TITAN COMICS",
     "year": "2015",
     "genre": 4,
-    "score": 4,
+    "avgRate": 4,
     "imageUrl": "https://d2snwnmzyr8jue.cloudfront.net/trj_9781782764823_270.jpeg",
     "description": "Long has it been whispered around Berk that one day a huge monster will rise from the sea and the world will end… And when a spate of local seaquakes start erupting, agitating dragons, things aren't looking good… What can scare a dragon?? Hiccup and the gang investigate and they do indeed meet up with something huge… Could this be the end of Berk? It's the most exciting Dragons Riders of Berk story yet, from the mighty pen of Simon Furman (Transformers, Matt Hatter Chronicles), with unbelievably dynamic art from Jack Lawrence (Teenage Mutant Ninja Turtles). Meanwhile, in a very special back-up story, Astrid is stranded on an isolated island and is hunted by a group of Smothering Smokebreaths… And to make matters worse, she can't find her battle-axe… Simon Furman pens this brilliant solo Astrid story, and get ready for some stunning painted art from artist Sara Richard!"
   },
@@ -54,8 +64,134 @@
     "publisher": "DARK HORSE",
     "year": "2005",
     "genre": 5,
-    "score": 5,
+    "avgRate": 5,
     "imageUrl": "https://d2snwnmzyr8jue.cloudfront.net/dkh_9781621151630_270.jpeg",
     "description": "What would it be like to stand head and shoulders above everyone else - and to keep growing? Unable to interact with a fragile world that isn't built to withstand your size? To live in a house that doesn't fit you anymore - with a wife who doesn't either? Craig Pressgang's life is well documented in his official CIA biography, Giant Man: Pillar of America, but the heroic picture it paints is only half the story. The continuous growth caused by Craig's strange medical condition brings a variety of problems as he becomes more isolated and unknowable. Told in three eras by three women with unique relationships with Craig, 3 Story follows his sad life from his birth to the present."
+  },
+  {
+    "id": 7,
+    "title": "The Walking Dead Vol. 1: Days Gone Bye",
+    "authors": ["Robert Kirkman"],
+    "publisher": "IMAGE COMICS",
+    "year": "2004",
+    "genre": 1,
+    "rate": {
+      "totalUsers": 38,
+      "percentages": {
+        "5": 10,
+        "4": 23,
+        "3": 3,
+        "2": 2,
+        "1": 0
+      }
+    },
+    "avgRate": 5,
+    "imageUrl": "https://d2snwnmzyr8jue.cloudfront.net/trj_9781607065333_270.jpeg",
+    "description": "Rick Grimes is not prepared for this. A couple months ago he was a small town cop who had never fired a shot and only ever saw one dead body. Separated from his family he must now sort through the death and confusion to try and find his wife and son."
+  },
+  {
+    "id": 8,
+    "title": "Doctor Who: The Eleventh Doctor Archives",
+    "authors": ["Joshua Hale Failkov"],
+    "publisher": "TITAN COMICS",
+    "year": "2015",
+    "genre": 1,
+    "rate": {
+      "totalUsers": 38,
+      "percentages": {
+        "5": 10,
+        "4": 23,
+        "3": 3,
+        "2": 2,
+        "1": 0
+      }
+    },
+    "avgRate": 5,
+    "imageUrl": "https://d2snwnmzyr8jue.cloudfront.net/trj_9781785850660_270.jpeg",
+    "description": "This special arc by Eisner-nominated writer Joshua Hale Fialkov concludes! The Silurian plan is revealed, apocalypse imminent, and with mere minutes to go, can the Doctor and his strange new ally save not just Casablanca but the entire human race?"
+  },
+  {
+    "id": 9,
+    "title": "Preacher: Book One",
+    "authors": ["Garth Ennis"],
+    "publisher": "TITAN COMICS",
+    "year": "2013",
+    "genre": 1,
+    "rate": {
+      "totalUsers": 38,
+      "percentages": {
+        "5": 10,
+        "4": 23,
+        "3": 3,
+        "2": 2,
+        "1": 0
+      }
+    },
+    "avgRate": 5,
+    "imageUrl": "https://d2snwnmzyr8jue.cloudfront.net/dcc_t0713300018301_270.jpeg",
+    "description": "Merging with a bizarre spiritual force called Genesis, Texan preacher Jesse Custer becomes completely disillusioned with the beliefs that he had dedicated his entire life to. Now possessing the power of \"The Word,\" an ability to make people do whatever he says, Custer begins a violent and riotous journey across the country. Joined by his gun-toting girlfriend Tulip and the hard drinking Irish vampire Cassidy, the Preacher loses faith in both man and God as he witnesses dark atrocities and improbable calamities during his exploration of America."
+  },
+  {
+    "id": 10,
+    "title": "Superman, Volume 1: What Price Tomorrow?",
+    "authors": ["George Perez", "Dan Jurgens"],
+    "publisher": "DC COMICS",
+    "year": "2012",
+    "genre": 1,
+    "rate": {
+      "totalUsers": 38,
+      "percentages": {
+        "5": 10,
+        "4": 23,
+        "3": 3,
+        "2": 2,
+        "1": 0
+      }
+    },
+    "avgRate": 5,
+    "imageUrl": "https://d2snwnmzyr8jue.cloudfront.net/dcc_t1049500018301_270.jpeg",
+    "description": "As a part of the acclaimed DC Comics-The New 52 event of September 2011, comics legend George Perez and artist Jesus Merino present the new adventures of the Man of Steel! Metropolis fears him. The Daily Planet agrees. This new volume of SUPERMAN finds our hero with a startling new status quo. As Superman finds ways to dodge the scrutiny placed upon him by the public and media, he must stop a monstrous threat to Metropolis - one that he somehow is the cause of! The next chapter in the legendary history of the Man of Steel is built here! Collects SUPERMAN #1-6."
+  },
+  {
+    "id": 11,
+    "title": "The Gorilla Hunters",
+    "authors": ["R. M. Ballantyne"],
+    "publisher": "CLASSIC COMIC STORE LTD.",
+    "year": "2014",
+    "genre": 1,
+    "rate": {
+      "totalUsers": 38,
+      "percentages": {
+        "5": 10,
+        "4": 23,
+        "3": 3,
+        "2": 2,
+        "1": 0
+      }
+    },
+    "avgRate": 5,
+    "imageUrl": "https://d2snwnmzyr8jue.cloudfront.net/trj_9781681000350_270.jpeg",
+    "description": "The book's themes are similar to those of Ballantyne's earlier work, The Coral Island, in which the boys testify to the positive influence of missionary work among the natives. Central in the novel is the hunt for gorillas, an animal newly known to the Western world,"
+  },
+  {
+    "id": 12,
+    "title": "Billy The Kid's Old Timey Oddities Vol. 2: The Ghastly Fiend Of London",
+    "authors": ["Eric Powell", "Kyle Hotz"],
+    "publisher": "DARK HORSE",
+    "year": "2011",
+    "genre": 1,
+    "rate": {
+      "totalUsers": 38,
+      "percentages": {
+        "5": 10,
+        "4": 23,
+        "3": 3,
+        "2": 2,
+        "1": 0
+      }
+    },
+    "avgRate": 5,
+    "imageUrl": "https://d2snwnmzyr8jue.cloudfront.net/dkh_9781621157861_270.jpeg",
+    "description": "Billy the Kid lives! The hired gun of a traveling spectacle of biological curiosities-or \"freaks.\" In their past adventures, Billy and crew have faced a variety of supernatural terrors, but none of that has prepared them to confront their most vicious challenge yet: Jack the Ripper! Introduction by Brian Azzarello. This volume includes \"Billy the Kid and the Pit of Horrors\" from the Buzzard miniseries."
   }
 ]

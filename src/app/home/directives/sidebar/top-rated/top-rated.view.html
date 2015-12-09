@@ -1,0 +1,10 @@
+<div class="row sidebar-element">
+  <div class="col-md-12">
+    <h3>Top Rated</h3>
+    <ol>
+      <li ng-repeat="comic in vm.comics | limitTo: 5">
+        <a ng-href="#/comics/{{comic.id}}">{{comic.title}} ({{ comic.avgRate }})</a>
+      </li>
+    </ol>
+  </div>
+</div>

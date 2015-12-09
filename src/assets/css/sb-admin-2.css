@@ -90,7 +90,7 @@ body {
   padding-left: 0;
 }
 
-.sidebar .sidebar-search {
+.sidebar .sidebar-element {
   padding: 15px;
 }
 
@@ -488,3 +488,12 @@ span.rollover:hover:before {
   vertical-align: middle;
   color: azure;
 }
+
+/** rating card **/
+.glyphicon { margin-right:5px;}
+.rating .glyphicon {font-size: 22px;}
+.rating-num { margin-top:0px;font-size: 54px; }
+.progress { margin-bottom: 5px;}
+.progress-bar { text-align: left; }
+.rating-desc .col-md-3 {padding-right: 0px;}
+.sr-only { margin-left: 5px;overflow: visible;clip: auto; }

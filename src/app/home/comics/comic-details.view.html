@@ -1,9 +1,9 @@
 <div class="clearfix" style="padding-top: 20px"></div>
- <div class="row">
+<div class="row">
   <section class="share-buttons">
   </section>
 
- <i ng-show="!vm.comic" class="glyphicon glyphicon-lg glyphicon-refresh glyphicon-spin"></i>
+  <i ng-show="!vm.comic" class="glyphicon glyphicon-lg glyphicon-refresh glyphicon-spin"></i>
   <section ng-show="vm.comic" class="comic-info">
     <div class="row">
       <div class="col-md-4">
@@ -76,7 +76,7 @@
           <form action="/borrow" method="post">
             <input name="titleId" value="11337367" type="hidden">
             <input name="contentId" value="11337367" type="hidden">
-            <button type="submit" class="btn btn-default" >Préstamo
+            <button type="submit" class="btn btn-default">Préstamo
             </button>
             <div style="display: none;">
               <input type="hidden" name="_sourcePage" value="WF0BAXWIRBKwR2EQWdjYkVx6wAq_W8Diu2HDoOgUkfIy5ej4NCINgg==">
@@ -96,7 +96,46 @@
 </div>
 </section>
 
-<section class="similar-comics">
 
+<!-- ----------------------------------------------------------------------------------------------------------------->
+<section class="similar-comics">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <div class="well well-sm">
+          <div class="row">
+            <div class="col-xs-12 col-md-6 text-center">
+              <h1 class="rating-num">
+                {{ vm.comic.avgRate }}</h1>
+              <div class="rating">
+                <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                </span><span class="glyphicon glyphicon-star-empty"></span>
+              </div>
+              <div>
+                <span class="glyphicon glyphicon-user"></span>{{ vm.comic.rate.totalUsers }} total
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+              <div class="row rating-desc">
+
+                <div class="col-xs-3 col-md-3 text-right" ng-repeat-start="(key, percentage) in vm.comic.rate.percentages">
+                  <span class="glyphicon glyphicon-star"></span>{{key}}
+                </div>
+                <div class="col-xs-8 col-md-9" ng-repeat-end>
+                  <uib-progressbar class="progress-striped" value="percentage" type="warning">
+                    <b>{{percentage}}%</b>
+                  </uib-progressbar>
+                </div>
+
+              </div>
+              <!-- end row -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 </div>

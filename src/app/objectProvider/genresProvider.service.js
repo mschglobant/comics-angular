@@ -3,8 +3,12 @@
   'use strict';
 
   angular.module("app")
-    .factory("genresProvider", ['specificProvider', function (specificProvider) {
-      return specificProvider.getSpecificProviderFor("genre");
+    .factory("genresProvider", ['specificProvider', 'comicsProvider', function (specificProvider, comicsProvider) {
+      var genresProvider = specificProvider.getSpecificProviderFor("genre");
+
+      // Funcionalidad para traer comics en array
+
+      return genresProvider;
     }]);
 
 }());
