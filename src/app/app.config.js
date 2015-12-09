@@ -62,6 +62,15 @@
             controller: 'GenresController',
             controllerAs: 'vm'
           })
+          .when('/editions', {
+            templateUrl: 'app/home/tabs/editions/editions.view.html'
+          })
+          .when('/news', {
+            templateUrl: 'app/home/tabs/news/news.view.html'
+          })
+          .when('/characters', {
+            templateUrl: 'app/home/tabs/characters/characters.view.html'
+          })
           .when('/404', {
             templateUrl: 'app/404.view.html'
           })

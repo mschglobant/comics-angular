@@ -28,5 +28,23 @@
     <h1 class="page-header">Random Comics</h1>
   </div>
 
+  <div class="text-center">
+    <i ng-show="!vm.randomComics" class="glyphicon glyphicon-lg glyphicon-refresh glyphicon-spin"></i>
+
+    <div ng-repeat="comic in vm.randomComics | limitTo: 4" class="col-lg-3 col-md-4 col-xs-6 thumb">
+      <a class="thumbnail" ng-href="#/comics/{{ comic.id }}">
+        <img class="img-responsive" ng-src="{{ comic.imageUrl }}" width="400" alt="">
+      </a>
+      <dl>
+        <dt>Title</dt>
+        <dd>{{ comic.title }}</dd>
+        <dt>Year</dt>
+        <dd>{{ comic.year }}</dd>
+        <dt>Publisher</dt>
+        <dd>{{ comic.publisher }}</dd>
+      </dl>
+    </div>
+  </div>
+
 
 </div>
