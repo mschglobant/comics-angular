@@ -1,26 +1,33 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    var _config = {
-        password: {
-            pattern: new RegExp(/^[a-z0-9]+$/i)
-        }
-    };
-
-    var User = function (name, password) {
-        this.name = name;
-        this.password = this.setPassword(password);
+  var _config = {
+    password: {
+      pattern: new RegExp(/^[a-z0-9]+$/i)
     }
+  };
 
-    User.prototype = {
-        setPassword: function (password) {
-            if ( !_config.password.pattern.test(password) ) {
-                throw "Password only accepts alphanumeric characters.";
-            }
-        },
-        checkPassword: function (password) {
-            return this.password == password;
-        }
+  var User = function (name, password) {
+    this.name = name;
+    this.password = this.setPassword(password);
+  }
+
+  User.prototype = {
+    setPassword: function (password) {
+      if (!_config.password.pattern.test(password)) {
+        throw "Password only accepts alphanumeric characters.";
+      }
+    },
+    checkPassword: function (password) {
+      return this.password == password;
+    },
+    displayName: function () {
+      if (user.firstName) {
+        return user.firstName + ' ' + user.lastName;
+      } else {
+        return user.username;
+      }
     }
+  }
 
 })();

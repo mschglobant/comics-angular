@@ -47,6 +47,11 @@
             controller: 'SignupController',
             controllerAs: 'vm'
           })
+          .when('/my-profile', {
+            templateUrl: 'app/home/my-profile/my-profile.view.html',
+            controller: 'MyProfileController',
+            controllerAs: 'vm'
+          })
           .when('/comics/:id', {
             templateUrl: 'app/home/comics/comic-details.view.html',
             controller: 'ComicsDetailsController',

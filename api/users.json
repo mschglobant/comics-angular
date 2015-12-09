@@ -2,11 +2,16 @@
   {
     "username": "admin",
     "password": "admin",
+    "email": "admin@comics-site.com",
     "role": "admin"
   },
   {
     "username": "user1",
     "password": "user1",
+    "firstName": "Jhon",
+    "lastName": "Doe",
+    "email": "user1@comics-site.com",
+    "twitter": "user1",
     "role": "user"
   }
 ]

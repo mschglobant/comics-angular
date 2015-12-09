@@ -7,7 +7,7 @@
       <h2 class="form-signin-heading">Please sign in</h2>
       <label for="loginUsername" class="sr-only">Username</label>
       <div ng-class="{ 'has-error': signinForm.username.$dirty && signinForm.username.$invalid }">
-        <input type="text" name="username" id="loginUsername" class="form-control" placeholder="Username" ng-model="vm.username" required autofocus>
+        <input type="text" name="username" id="loginUsername" class="form-control" placeholder="Username" ng-model="vm.username" required autocomplete="off" autofocus>
       </div>
       <label for="loginPassword" class="sr-only">Password</label>
       <input type="password" id="loginPassword" class="form-control" placeholder="Password" ng-model="vm.password" required>

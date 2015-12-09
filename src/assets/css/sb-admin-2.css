@@ -444,3 +444,47 @@ footer {
         transform: rotate(359deg);
     }
 }
+
+/** */
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+small {
+  display: block;
+  line-height: 1.428571429;
+  color: #999;
+}
+
+/** rollover thumbnails */
+
+span.rollover {
+  opacity: 1;
+  -o-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -webkit-transition: -webkit-transform 1s;
+  background:url(images/mag.png) center center no-repeat #000;
+  cursor: pointer;
+  height: 160px;
+  width: 160px;
+  position: absolute;
+  z-index: 10;
+  opacity: 0;
+}
+
+span.rollover:hover {
+  opacity: .7;
+  -o-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -webkit-transition: -webkit-transform 1s;
+  -webkit-box-shadow: 0px 0px 4px #000;
+  -moz-box-shadow: 0px 0px 4px #000;
+  box-shadow: 0px 0px 4px #000;
+}
+span.rollover:hover:before {
+  font-family: FontAwesome;
+  font-size: 2em;
+  content: "\f0ee";
+  display: inline-block;
+  padding-right: 3px;
+  vertical-align: middle;
+  color: azure;
+}

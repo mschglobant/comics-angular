@@ -1,0 +1,62 @@
+<div class="clearfix"></div>
+<h1 class="page-header">User Profile</h1>
+
+<div class="row">
+  <div class="col-md-12" id="content">
+    <div>
+      <div id="details" class="col-md-7">
+        <div>
+
+          <a class="image" href="" ng-click="vm.changeProfilePicture()">
+            <span class="rollover"></span>
+            <img ng-src="{{vm.user.displayImageUrl()}}" width="160" height="160">
+          </a>
+
+          <h3>{{vm.user.displayName()}} <em>({{vm.user.username}})</em></h3>
+          <h4>{{vm.user.displayRole()}}</h4>
+          <br>
+          <table class="table table-striped">
+
+            <tbody>
+              <tr>
+                <td>Office Phone:</td>
+                <td><i class="icon-home"></i> {{vm.user.officePhone}}</td>
+              </tr>
+              <tr>
+                <td>Cell Phone:</td>
+                <td><i class="icon-headphones"></i> {{vm.user.mobilePhone}}</td>
+              </tr>
+              <tr>
+                <td>Email:</td>
+                <td><i class="icon-envelope"></i> <a target="_blank" href="mailto:{{vm.user.email}}">{{vm.user.email}}</a></td>
+              </tr>
+              <tr>
+                <td>Twitter:</td>
+                <td><i class="icon-retweet"></i> <a target="_blank" href="https://twitter.com/{{vm.user.twitter}}">@{{vm.user.twitter}}</a></td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div id="reports" class="well">
+          <h3 class="modal-header">Last Borrows</h3>
+
+          <div ng-show="!vm.user.hasBorrows()" class="alert alert-info no-reports">
+            <h4 class="alert-heading">Info</h4> John Doe has not borrowed comics yet
+          </div>
+          <ul ng-show="vm.user.hasBorrows()" class="nav nav-list">
+            <li ng-repeat="comic in vm.user.getBorrows()">
+              <a href="#comics/{{comic.id}}">
+                <img width="50" height="50" ng-src="{{comic.imageUrl}}" style="float:left;margin-right: 10px;">
+                <p class="list-item">{{comic.title}}
+                  <br>{{comic.publisher}}</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
