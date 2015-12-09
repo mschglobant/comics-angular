@@ -13,7 +13,9 @@
 
   <div id="navbar" class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
-      <li ng-repeat="item in vm.menuItems" ng-class="{active: item.isActive()}"><a ng-href="#{{item.path}}">{{item.title}}</a></li>
+      <li ng-repeat="item in vm.menuItems" ng-class="{active: item.isActive()}">
+        <a ng-href="#{{item.path}}">{{item.title}}</a>
+      </li>
     </ul>
 
     <header-notification></header-notification>

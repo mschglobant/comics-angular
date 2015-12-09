@@ -6,6 +6,7 @@
       return {
         templateUrl: 'app/home/directives/header/header-notification/header-notification.html',
         restrict: 'E',
+        scope: true,
         replace: true,
         controller: ['$scope', '$location', 'authentication', function ($scope, $location, authentication) {
           var vm = this;

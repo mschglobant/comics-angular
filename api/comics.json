@@ -1,18 +1,61 @@
 [
   {
-    "id": "1",
+    "id": 1,
     "title": "Batman/Superman Vol. 1: Cross World",
     "publisher": "DC Comics",
     "year": "2014",
+    "genre": 1,
+    "score": 5,
     "imageUrl": "https://d2snwnmzyr8jue.cloudfront.net/dcc_t1219400018301_270.jpeg",
     "description": "The Dark Knight and the Man of Steel are close friends in the modern day-but the two weren't always such close allies. Discover how two of the World's Finest Super Heroes met for the first time in the New 52, and the mysterious adventure that takes them to a whole new world-the world of Earth-2! The heroes of the main DC Universe meet their Earth-2 counterparts for the first time! Collects BATMAN #1-4 and JUSTICE LEAGUE #23.1: DARKSEID."
   },
   {
-    "id": "2",
+    "id": 2,
     "title": "Minions",
     "publisher": "TITAN COMICS",
     "year": "2015",
+    "genre": 2,
+    "score": 3,
     "imageUrl": "https://d2snwnmzyr8jue.cloudfront.net/trj_9781782768128_270.jpeg",
     "description": "From the creators of Despicable Me comes a brand new movie adventure in yellow… Minions. This fresh new comic featuring the stars of the upcoming new movie brings together a collection of hilarious comic stories featuring everyone's favourite yellow, banana-loving henchmen."
+  },
+  {
+    "id": 3,
+    "title": "Batman: Arkham Knight Vol. 1",
+    "publisher": "DC COMICS",
+    "year": "2015",
+    "genre": 1,
+    "score": 2,
+    "imageUrl": "https://d2snwnmzyr8jue.cloudfront.net/dcc_t1436800018301_270.jpeg",
+    "description": "The prequel to the best-selling game BATMAN: ARKHAM KNIGHT! The Joker is dead. Arkham City is closed. As a new day begins, Bruce Wayne finds himself in devastating pain, recovering from his injuries and questioning whether his role as Batman is still necessary to the city's survival. But as the sun rises in Gotham City, dangerous new threats emerge from the shadows...and the Arkham Knight is just beginning. Don't miss this in-continuity prequel comic set prior to the events of the brand-new video game Batman: Arkham Knight!"
+  },
+  {
+    "id": 4,
+    "title": "Peanuts Vol. 4",
+    "publisher": "BOOM! STUDIOS",
+    "year": "2014",
+    "genre": 2,
+    "imageUrl": "https://d2snwnmzyr8jue.cloudfront.net/trj_9781613982815_270.jpeg",
+    "description": "New PEANUTS adventures, perfect for you and your Sweet Babboo! It's time to hop atop your doghouse biplane and escape into the wonderful world of legendary cartoonist Charles M. Schulz with brand-new adventures from an all-star lineup of writers and artists, and classic strips by Schulz himself. Featuring Charlie Brown and the whole Peanuts gang, this timeless collection of humor and imagination is sure to help you finally kick that football or take to the skies and defeat the Red Baron once and for all."
+  },
+  {
+    "id": 5,
+    "title": "DreamWorks' Dragons: Riders of Berk - Volume 5",
+    "publisher": "TITAN COMICS",
+    "year": "2015",
+    "genre": 4,
+    "score": 4,
+    "imageUrl": "https://d2snwnmzyr8jue.cloudfront.net/trj_9781782764823_270.jpeg",
+    "description": "Long has it been whispered around Berk that one day a huge monster will rise from the sea and the world will end… And when a spate of local seaquakes start erupting, agitating dragons, things aren't looking good… What can scare a dragon?? Hiccup and the gang investigate and they do indeed meet up with something huge… Could this be the end of Berk? It's the most exciting Dragons Riders of Berk story yet, from the mighty pen of Simon Furman (Transformers, Matt Hatter Chronicles), with unbelievably dynamic art from Jack Lawrence (Teenage Mutant Ninja Turtles). Meanwhile, in a very special back-up story, Astrid is stranded on an isolated island and is hunted by a group of Smothering Smokebreaths… And to make matters worse, she can't find her battle-axe… Simon Furman pens this brilliant solo Astrid story, and get ready for some stunning painted art from artist Sara Richard!"
+  },
+  {
+    "id": 6,
+    "title": "3 Story: The Secret History Of The Giant Man",
+    "publisher": "DARK HORSE",
+    "year": "2005",
+    "genre": 5,
+    "score": 5,
+    "imageUrl": "https://d2snwnmzyr8jue.cloudfront.net/dkh_9781621151630_270.jpeg",
+    "description": "What would it be like to stand head and shoulders above everyone else - and to keep growing? Unable to interact with a fragile world that isn't built to withstand your size? To live in a house that doesn't fit you anymore - with a wife who doesn't either? Craig Pressgang's life is well documented in his official CIA biography, Giant Man: Pillar of America, but the heroic picture it paints is only half the story. The continuous growth caused by Craig's strange medical condition brings a variety of problems as he becomes more isolated and unknowable. Told in three eras by three women with unique relationships with Craig, 3 Story follows his sad life from his birth to the present."
   }
 ]

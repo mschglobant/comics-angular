@@ -49,7 +49,12 @@
           })
           .when('/comics/:id', {
             templateUrl: 'app/home/comics/comic-details.view.html',
-            controller: 'ComicsDetails',
+            controller: 'ComicsDetailsController',
+            controllerAs: 'vm'
+          })
+          .when('/genres', {
+            templateUrl: 'app/home/tabs/genres/genres.view.html',
+            controller: 'GenresController',
             controllerAs: 'vm'
           })
           .when('/404', {

@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('comicsHome')
-    .controller("ComicsDetails", ['$routeParams', '$scope', 'comicsProvider', function ($routeParams, $scope, comicsProvider) {
+    .controller("ComicsDetailsController", ['$routeParams', '$scope', 'comicsProvider', function ($routeParams, $scope, comicsProvider) {
 
       var vm = this;
 

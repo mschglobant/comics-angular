@@ -3,15 +3,18 @@
 
   angular.module('comicsHome')
     .directive('header', function () {
+
       return {
         templateUrl: 'app/home/directives/header/header.html',
         restrict: 'E',
         replace: true,
-        controllerAs: 'vm',
-        controller: ['authentication', '$location', function (authentication, $location) {
+        scope: true,
+        controller: ['authentication', '$location', '$scope', function (authentication, $location) {
 
-          this.isLoggedIn = isLoggedIn;
-          this.menuItems = [
+          var vm = this;
+
+          vm.isLoggedIn = isLoggedIn;
+          vm.menuItems = [
             new MenuItem("Home", "/"),
             new MenuItem("Genres", "/genres"),
             new MenuItem("Editions", "/editions"),
@@ -35,8 +38,10 @@
           MenuItem.prototype.go = function () {
             $location.path(this.path);
           }
-        }]
-      }
+        }],
+        controllerAs: 'vm'
+      };
+
     });
 
 }());

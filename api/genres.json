@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "title": "Action & Adventure",
+    "comics": []
+  },
+  {
+    "id": 2,
+    "title": "Children's",
+    "comics": []
+  },
+  {
+    "id": 3,
+    "title": "Crime",
+    "comics": []
+  },
+  {
+    "id": 4,
+    "title": "Fantasy",
+    "comics": []
+  },
+  {
+    "id": 5,
+    "title": "Westerns",
+    "comics": []
+  }
+]
