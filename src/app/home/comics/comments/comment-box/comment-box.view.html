@@ -2,7 +2,7 @@
   <div class="col-md-6 col-centered">
     <div class="widget-area no-padding blank">
       <div class="status-upload">
-        <form name="form" role="form" ng-submit="check() && addComment()" novalidate>
+        <form name="form" role="form" ng-submit="!disable && check() && addComment()" novalidate>
           <div class="form-group" ng-class="{ 'has-error': form.comment.$dirty && !form.comment.$valid }">
             <textarea name="comment" ng-model="newComment.comment" placeholder="Insert your comment here" required></textarea>
             <span ng-show="(form.comment.$dirty || tryToSubmit) && !form.comment.$valid" class="help-block">Comment is required</span>

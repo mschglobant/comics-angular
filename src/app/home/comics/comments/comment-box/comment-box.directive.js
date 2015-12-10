@@ -29,6 +29,7 @@
       return $scope.newComment.comment && $scope.newComment.rate;
     }
     $scope.addComment = function () {
+      $scope.disable = true;
       $scope.newComment.username = authentication.getLoggedUser().username;
       $scope.newComment.timestamp = new Date();
 
@@ -41,6 +42,7 @@
       $scope.newComment = {};
       $scope.tryToSubmit = false;
       $scope.form.$setPristine();
+      $scope.disable = false;
     }
   }
 
