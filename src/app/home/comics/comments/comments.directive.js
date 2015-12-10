@@ -7,19 +7,31 @@
     .directive("comments", comments);
 
   // directive
-  function comments () {
+  function comments() {
     return {
       scope: {
         comic: '='
       },
       templateUrl: 'app/home/comics/comments/comments.view.html',
-      controller: 'CommentBoxController'
+      controller: 'CommentsController'
     }
   }
 
   // controller
   CommentsController.$inject = ['$scope'];
-  function CommentsController ($scope) {
+
+  function CommentsController($scope) {
+
+    $scope.$watch('comic', function(comic) {
+      if ($scope.comic) {
+        $scope.comic.comments.forEach(function (comment) {
+          if (comment.timestamp && (typeof comment.timestamp === 'string' || comment.timestamp instanceof String)) {
+            comment.timestamp = new Date(comment.timestamp);
+          }
+        });
+      }
+    });
+
   }
 
 }());

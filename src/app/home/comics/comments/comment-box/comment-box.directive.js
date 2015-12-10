@@ -18,11 +18,9 @@
   }
 
   // controller
-  CommentBoxController.$inject = ['$scope', 'authentication'];
-  function CommentBoxController ($scope, authentication) {
-    $scope.newComment = {
-      username: authentication.getLoggedUser().username
-    };
+  CommentBoxController.$inject = ['$scope', 'authentication', 'comicsProvider'];
+  function CommentBoxController ($scope, authentication, comicsProvider) {
+    $scope.newComment = {};
 
     $scope.tryToSubmit = false;
 
@@ -31,13 +29,16 @@
       return $scope.newComment.comment && $scope.newComment.rate;
     }
     $scope.addComment = function () {
+      $scope.newComment.username = authentication.getLoggedUser().username;
+      $scope.newComment.timestamp = new Date();
+
       $scope.comic.comments.push($scope.newComment);
       $scope.comic.rate.totalUsers +=1;
       $scope.comic.rate.percentages[$scope.newComment.rate] +=1;
 
-      $scope.newComment = {
-        username: authentication.getLoggedUser().username
-      };
+      comicsProvider.persist($scope.comic);
+
+      $scope.newComment = {};
       $scope.tryToSubmit = false;
       $scope.form.$setPristine();
     }

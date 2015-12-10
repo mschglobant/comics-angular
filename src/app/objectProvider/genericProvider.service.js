@@ -123,7 +123,7 @@
           return (elem.id) && ids.indexOf(elem.id) !== -1;
         });
         if (single) {
-          if(result.length < 1) {
+          if (result.length < 1) {
             throw "No existe el objeto del tipo '" + type + "' con id '" + ids + "'";
           }
           return result[0];
@@ -154,12 +154,44 @@
 
       ///////
       function success(currentCollection) {
-        currentCollection.push(object);
 
+        if (object.id) {
+          var index = findWithAttr(currentCollection, 'id', object.id);
+          if (index) {
+            currentCollection[index] = object;
+          } else {
+            currentCollection.push(object);
+          }
+        } else {
+          // Maximo id
+          var newId = currentCollection.reduce(function (valorAnterior, valorActual, index, array) {
+            return valorActual > valorAnterior ? valorActual : valorAnterior;
+          });
+          object.id = newId;
+          currentCollection.push(object);
+        }
+
+        // Flush! (sacar de aca)
         loadedObjects[type] = currentCollection;
         storage[prefix + type] = JSON.stringify(currentCollection);
+
+        // Funcion para buscar elemento del array con una prop determinada
+        function findWithAttr(array, attr, value) {
+          for (var i = 0; i < array.length; i += 1) {
+            if (array[i][attr] === value) {
+              return i;
+            }
+          }
+        }
       }
 
+    },
+
+    flush: function (type) {
+      getType(type).then(function () {
+        loadedObjects[type] = currentCollection;
+        storage[prefix + type] = JSON.stringify(currentCollection);
+      });
     }
   };
 

@@ -8,7 +8,7 @@
   <div class="col-sm-5">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <strong>{{comment.username}}</strong> <span class="text-muted">commented 5 days ago</span>
+        <strong>{{comment.username}}</strong> <span class="text-muted">commented on {{comment.timestamp | date}}</span>
       </div>
       <div class="panel-body">
         {{comment.comment}}
