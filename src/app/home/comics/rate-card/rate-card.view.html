@@ -1,29 +1,25 @@
-
- <div class="container" ng-show="comic && comic.rate">
-
-   <div class="row">
-     {{comic}}
-   </div>
+<div class="container" ng-show="vm.comic && vm.comic.rate">
   <div class="row">
     <div class="col-xs-12 col-md-6">
       <div class="well well-sm">
         <div class="row">
           <div class="col-xs-12 col-md-6 text-center">
             <h1 class="rating-num">
-              4.0</h1>
+              vm.comic.rate.avg
+            </h1>
             <div class="rating">
               <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
               </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
               </span><span class="glyphicon glyphicon-star-empty"></span>
             </div>
             <div>
-              <span class="glyphicon glyphicon-user"></span>{{ rate.totalUsers }} total
+              <span class="glyphicon glyphicon-user"></span>{{ vm.comic.rate.totalUsers }} total
             </div>
           </div>
           <div class="col-xs-12 col-md-6">
             <div class="row rating-desc">
 
-              <div class="col-xs-3 col-md-3 text-right" ng-repeat-start="(key, percentage) in rate.percentages">
+              <div class="col-xs-3 col-md-3 text-right" ng-repeat-start="(key, percentage) in vm.comic.rate.percentages">
                 <span class="glyphicon glyphicon-star"></span>{{key}}
               </div>
               <div class="col-xs-8 col-md-9" ng-repeat-end>

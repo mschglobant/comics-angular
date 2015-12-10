@@ -1,0 +1,19 @@
+<div class="row-centered">
+  <div class="col-md-6 col-centered">
+    <div class="widget-area no-padding blank">
+      <div class="status-upload">
+        <form name="form" role="form" ng-submit="check() && addComment()" novalidate>
+          <div class="form-group" ng-class="{ 'has-error': form.comment.$dirty && !form.comment.$valid }">
+            <textarea name="comment" ng-model="newComment.comment" placeholder="Insert your comment here" required></textarea>
+            <span ng-show="(form.comment.$dirty || tryToSubmit) && !form.comment.$valid" class="help-block">Comment is required</span>
+          </div>
+          <input type="hidden" name="rate" ng-model="newComment.rate" required>
+          <uib-rating ng-model="newComment.rate" max="5" readonly="false" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
+          <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+          <span ng-show="tryToSubmit && !form.rate.$valid" class="help-block">Rate is required</span>
+          <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Comment</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

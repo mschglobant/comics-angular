@@ -1,141 +1,145 @@
-<div class="clearfix" style="padding-top: 20px"></div>
-<div class="row">
-  <section class="share-buttons">
-  </section>
+<i ng-show="!vm.comic" class="glyphicon glyphicon-lg glyphicon-refresh glyphicon-spin"></i>
+<div ng-show="vm.comic">
+  <div class="clearfix" style="padding-top: 20px"></div>
+  <div class="row">
+    <section class="share-buttons">
+    </section>
 
-  <i ng-show="!vm.comic" class="glyphicon glyphicon-lg glyphicon-refresh glyphicon-spin"></i>
-  <section ng-show="vm.comic" class="comic-info">
-    <div class="row">
-      <div class="col-md-4">
+    <section ng-show="vm.comic" class="comic-info">
+      <div class="row">
+        <div class="col-md-4">
 
-        <div class="thumbnail">
-          <img ng-src="{{vm.comic.imageUrl}}" alt="Comic's cover">
-        </div>
-
-        <div class="title-meta text-center">
-          <span>144 printed pages</span>
-          <span>{{vm.comic.year | uppercase }}</span>
-        </div>
-
-      </div>
-
-      <div class="col-md-8">
-        <div class="row">
-          <div class="col-md-10">
-            <h2>{{ vm.comic.title }}</h2>
-            <h5 class="subheader">Issue #32</h5>
+          <div class="thumbnail">
+            <img ng-src="{{vm.comic.imageUrl}}" alt="Comic's cover">
           </div>
+
+          <div class="title-meta text-center">
+            <span>144 printed pages</span>
+            <span>{{vm.comic.year | uppercase }}</span>
+          </div>
+
         </div>
 
-        <div class="row form-group">
-          <div class="col-md-12">
-            <div class="title-meta">
-              <span>
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-10">
+              <h2>{{ vm.comic.title }}</h2>
+              <h5 class="subheader">Issue #32</h5>
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-12">
+              <div class="title-meta">
+                <span>
                <a class="alt-dark" ng-href="#/publisher/{{vm.comic.publisher.id}}">{{ vm.comic.publisher.name }}</a>
              </span>
 
-              <span>
+                <span>
                ENGLISH
              </span>
 
+              </div>
             </div>
-          </div>
 
-          <div class="col-md-12">
-            <span><strong>Authors |</strong></span>
+            <div class="col-md-12">
+              <span><strong>Authors |</strong></span>
 
-            <span ng-repeat="author in vm.comic.authors">
-             <a class="artist alt-dark" ng-href="/artist/1329484203">{{author.name}}</a>,
+              <span ng-repeat="author in vm.comic.authors">
+             <a class="artist alt-dark" ng-href="/artist/1329484203">{{author}}{{ $last || ',' }}</a>
             </span>
-          </div>
+            </div>
 
-          <div class="col-md-12">
-            <span><strong>Ilustrators |</strong></span>
+            <div class="col-md-12">
+              <span><strong>Ilustrators |</strong></span>
 
-            <span ng-repeat="illustrator in vm.comic.illustrators">
+              <span ng-repeat="illustrator in vm.comic.illustrators">
                 <a class="artist alt-dark" ng-href="/artist/1329484203">{{illustrator.name}}</a>,
               </span>
+            </div>
           </div>
-        </div>
 
-        <div class="row form-group">
-          <div class="col-md-12">
-            <span><strong>Similar |</strong></span>
+          <div class="row form-group">
+            <div class="col-md-12">
+              <span><strong>Similar |</strong></span>
 
-            <span ng-repeat="illustrator in vm.comic.illustrators">
+              <span ng-repeat="illustrator in vm.comic.illustrators">
               <a class="artist alt-dark" ng-href="/artist/1329484203">{{illustrator.name}}</a>,
             </span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="row">
+          <div class="col-md-5">
+            <form action="/borrow" method="post">
+              <input name="titleId" value="11337367" type="hidden">
+              <input name="contentId" value="11337367" type="hidden">
+              <button type="submit" class="btn btn-default">Préstamo
+              </button>
+              <div style="display: none;">
+                <input type="hidden" name="_sourcePage" value="WF0BAXWIRBKwR2EQWdjYkVx6wAq_W8Diu2HDoOgUkfIy5ej4NCINgg==">
+                <input type="hidden" name="__fp" value="bjOimUab-ak=">
+              </div>
+            </form>
+          </div>
+
+          <div class="row-md-7">
+
           </div>
         </div>
-
       </div>
 
-      <!-- ACTIONS -->
+      {{ vm.comic.description }}
+
+  </div>
+
+  <section class="similar-comics">
+    <div class="container">
+
       <div class="row">
-        <div class="col-md-5">
-          <form action="/borrow" method="post">
-            <input name="titleId" value="11337367" type="hidden">
-            <input name="contentId" value="11337367" type="hidden">
-            <button type="submit" class="btn btn-default">Préstamo
-            </button>
-            <div style="display: none;">
-              <input type="hidden" name="_sourcePage" value="WF0BAXWIRBKwR2EQWdjYkVx6wAq_W8Diu2HDoOgUkfIy5ej4NCINgg==">
-              <input type="hidden" name="__fp" value="bjOimUab-ak=">
-            </div>
-          </form>
-        </div>
-
-        <div class="row-md-7">
-
-        </div>
-      </div>
-    </div>
-
-    {{ vm.comic.description }}
-
-</div>
-</section>
-
-
-<!-- ----------------------------------------------------------------------------------------------------------------->
-<section class="similar-comics">
-  <div class="container">
-
-    <div class="row">
-      <div class="col-xs-12 col-md-6">
-        <div class="well well-sm">
-          <div class="row">
-            <div class="col-xs-12 col-md-6 text-center">
-              <h1 class="rating-num">
-                {{ vm.comic.avgRate }}</h1>
-              <div class="rating">
-                <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+        <div class="col-xs-12 col-md-6">
+          <div class="well well-sm">
+            <div class="row">
+              <div class="col-xs-12 col-md-6 text-center">
+                <h1 class="rating-num">
+                {{ vm.comic.rate.avg | number:2 }}</h1>
+                <div class="rating">
+                  <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
                 </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
                 </span><span class="glyphicon glyphicon-star-empty"></span>
-              </div>
-              <div>
-                <span class="glyphicon glyphicon-user"></span>{{ vm.comic.rate.totalUsers }} total
-              </div>
-            </div>
-            <div class="col-xs-12 col-md-6">
-              <div class="row rating-desc">
-
-                <div class="col-xs-3 col-md-3 text-right" ng-repeat-start="(key, percentage) in vm.comic.rate.percentages">
-                  <span class="glyphicon glyphicon-star"></span>{{key}}
                 </div>
-                <div class="col-xs-8 col-md-9" ng-repeat-end>
-                  <uib-progressbar class="progress-striped" value="percentage" type="warning">
-                    <b>{{percentage}}%</b>
-                  </uib-progressbar>
+                <div>
+                  <span class="glyphicon glyphicon-user"></span>{{ vm.comic.rate.totalUsers }} total
                 </div>
-
               </div>
-              <!-- end row -->
+              <div class="col-xs-12 col-md-6">
+                <div class="row rating-desc">
+
+                  <div class="col-xs-3 col-md-3 text-right" ng-repeat-start="(key, percentage) in vm.comic.rate.percentages">
+                    <span class="glyphicon glyphicon-star"></span>{{key}}
+                  </div>
+                  <div class="col-xs-8 col-md-9" ng-repeat-end>
+                    <uib-progressbar class="progress-striped" value="percentage" type="warning">
+                      <b>{{percentage}}%</b>
+                    </uib-progressbar>
+                  </div>
+
+                </div>
+                <!-- end row -->
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+
+  <hr/>
+
+  <comments comic="vm.comic"></comments>
+
 </div>
