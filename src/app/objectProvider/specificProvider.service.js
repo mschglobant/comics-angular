@@ -28,6 +28,9 @@
         find: function (id) {
           return objectProvider.find(type, id);
         },
+        findById: function (ids) {
+          return objectProvider.findById(type, ids);
+        },
         findBy: function (expr) {
           return objectProvider.findBy(type, expr);
         },

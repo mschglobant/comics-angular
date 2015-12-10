@@ -14,6 +14,7 @@
     "metisMenu": "~2.2.0",
     "font-awesome": "~4.5.0",
     "angular-bootstrap": "~0.14.3",
-    "ngstorage": "~0.3.10"
+    "ngstorage": "~0.3.10",
+    "angular-filter": "~0.5.8"
   }
 }

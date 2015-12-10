@@ -62,6 +62,11 @@
             controller: 'GenresController',
             controllerAs: 'vm'
           })
+          .when('/genres/:id', {
+            templateUrl: 'app/home/tabs/genres/genres-detail/genres-detail.view.html',
+            controller: 'GenreDetailController',
+            controllerAs: 'vm'
+          })
           .when('/editions', {
             templateUrl: 'app/home/tabs/editions/editions.view.html'
           })

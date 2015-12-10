@@ -33,7 +33,7 @@
             this.path = path;
           }
           MenuItem.prototype.isActive = function () {
-            return this.path == $location.path();
+            return this.path == $location.path() || (this.path !== '/' && $location.path().indexOf(this.path) !== -1);
           }
           MenuItem.prototype.go = function () {
             $location.path(this.path);

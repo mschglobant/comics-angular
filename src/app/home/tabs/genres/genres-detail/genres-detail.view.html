@@ -1,0 +1,12 @@
+<div class="clearfix"></div>
+<h1>{{vm.genre.title}}</h1>
+<i ng-show="!vm.comics" class="glyphicon glyphicon-lg glyphicon-refresh glyphicon-spin"></i>
+<div class=row ng-repeat="groupOfcomics in vm.comics | chunkBy:4">
+  <div class="col-md-3" ng-repeat="comic in groupOfcomics">
+    <div class="thumbnail">
+      <a ng-href="#/comics/{{comic.id}}">
+        <img ng-src="{{comic.imageUrl}}" alt="Comic's cover">
+      </a>
+    </div>
+  </div>
+</div>

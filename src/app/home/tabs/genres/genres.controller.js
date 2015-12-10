@@ -2,19 +2,27 @@
   'use strict';
 
   angular.module('comicsHome')
-    .controller("GenresController", ['genresProvider', 'userProvider', function (genresProvider, userProvider) {
+    .controller("GenresController", ['genresProvider', 'comicsProvider', function (genresProvider, comicsProvider) {
       var vm = this;
-      genresProvider.findAll().then(function (genres) {
-        vm.genres = genres;
 
-        genres[0].comics = [
-          {imageUrl: "https://d2snwnmzyr8jue.cloudfront.net/dcc_t1219400018301_270.jpeg"},
-          {imageUrl: "https://d2snwnmzyr8jue.cloudfront.net/dcc_t1219400018301_270.jpeg"},
-          {imageUrl: "https://d2snwnmzyr8jue.cloudfront.net/dcc_t1219400018301_270.jpeg"},
-          {imageUrl: "https://d2snwnmzyr8jue.cloudfront.net/dcc_t1219400018301_270.jpeg"},
-          {imageUrl: "https://d2snwnmzyr8jue.cloudfront.net/dcc_t1219400018301_270.jpeg"},
-          {imageUrl: "https://d2snwnmzyr8jue.cloudfront.net/dcc_t1219400018301_270.jpeg"},
-        ]
-      });
+
+      if (!vm.genresLoaded) {
+        genresProvider.findAll().then(function (genres) {
+          vm.genres = genres;
+
+          genres.forEach(function(genre, index, array) {
+            if (!genre.comicsLoaded) {
+              comicsProvider.findById(genre.comics).then(function (comics) {
+                genre.comics = comics;
+                genre.comicsLoaded = true;
+              });
+            }
+          });
+
+        });
+        vm.genresLoaded = true;
+      }
+
+
     }]);
 }());
