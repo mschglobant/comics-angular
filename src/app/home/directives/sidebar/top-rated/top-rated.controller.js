@@ -18,7 +18,7 @@
 
 
 
-      vm.comics = $filter('orderBy')(comics, '-avgRate');
+      vm.comics = $filter('orderBy')(comics, '-rate.avg');
     });
 
   }

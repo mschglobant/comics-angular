@@ -1,8 +1,8 @@
 {
-  "name": "angular-seed",
-  "description": "A starter project for AngularJS",
-  "version": "0.0.0",
-  "homepage": "https://github.com/angular/angular-seed",
+  "name": "angular-comics",
+  "description": "Final Proyect for Angular Training in Globant",
+  "version": "0.0.1",
+  "homepage": "https://github.com/mschglobant/comics-angular",
   "license": "MIT",
   "private": true,
   "dependencies": {

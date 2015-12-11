@@ -48,7 +48,7 @@ var Comic;
     var total = 0,
       sum = .0;
     for (var stars in this.rate.percentages) {
-      total = this.rate.percentages[stars];
+      total += this.rate.percentages[stars];
       sum += stars * this.rate.percentages[stars];
     }
     this.rate.avg = sum / total;
