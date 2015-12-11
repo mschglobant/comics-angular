@@ -4,7 +4,7 @@
 
   angular.module("app")
     .factory("userProvider", ['specificProvider', function (specificProvider) {
-      return specificProvider.getSpecificProviderFor("user");
+      return specificProvider.getSpecificProviderFor("user", User);
     }]);
 
 }());

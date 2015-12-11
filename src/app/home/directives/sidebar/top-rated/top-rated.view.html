@@ -1,10 +1,10 @@
 <div class="row sidebar-element">
   <div class="col-md-12">
-    <h3>Top Rated</h3>
+    <h3>Top Ratedsss</h3>
     <ol>
       <li ng-repeat="comic in vm.comics | limitTo: 5">
-        <a ng-href="#/comics/{{comic.id}}">{{comic.title}}</a> <strong>({{ comic.avgRate | number:2 }})</strong><br/>
-        <uib-rating ng-model="comic.avgRate" max="5" readonly="true" aria-labelledby="default-rating"></uib-rating>
+        <a ng-href="#/comics/{{comic.id}}">{{comic.title}}</a> <strong>({{ comic.rate.avg | number:2 }})</strong><br/>
+        <uib-rating ng-model="comic.rate.avg" max="5" readonly="true" aria-labelledby="default-rating"></uib-rating>
       </li>
     </ol>
   </div>
