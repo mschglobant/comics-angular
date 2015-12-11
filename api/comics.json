@@ -5,6 +5,7 @@
     "publisher": "DC Comics",
     "year": "2014",
     "genre": 1,
+    "language": "english",
     "rate": {
       "totalUsers": 38,
       "percentages": {
@@ -25,6 +26,7 @@
     "publisher": "TITAN COMICS",
     "year": "2015",
     "genre": 2,
+    "language": "english",
     "rate": {
       "totalUsers": 58,
       "percentages": {
@@ -45,6 +47,7 @@
     "publisher": "DC COMICS",
     "year": "2015",
     "genre": 1,
+    "language": "english",
     "rate": {
       "totalUsers": 131,
       "percentages": {
@@ -64,6 +67,8 @@
     "title": "Peanuts Vol. 4",
     "publisher": "BOOM! STUDIOS",
     "year": "2014",
+    "genre": 2,
+    "language": "english",
     "rate": {
       "totalUsers": 65,
       "percentages": {
@@ -84,6 +89,7 @@
     "publisher": "TITAN COMICS",
     "year": "2015",
     "genre": 4,
+    "language": "english",
     "rate": {
       "totalUsers": 38,
       "percentages": {
@@ -104,6 +110,7 @@
     "publisher": "DARK HORSE",
     "year": "2005",
     "genre": 5,
+    "language": "english",
     "rate": {
       "totalUsers": 38,
       "percentages": {
@@ -125,6 +132,7 @@
     "publisher": "IMAGE COMICS",
     "year": "2004",
     "genre": 1,
+    "language": "english",
     "rate": {
       "totalUsers": 38,
       "percentages": {
@@ -146,6 +154,7 @@
     "publisher": "TITAN COMICS",
     "year": "2015",
     "genre": 1,
+    "language": "english",
     "rate": {
       "totalUsers": 38,
       "percentages": {
@@ -167,6 +176,7 @@
     "publisher": "TITAN COMICS",
     "year": "2013",
     "genre": 1,
+    "language": "english",
     "rate": {
       "totalUsers": 38,
       "percentages": {
@@ -188,6 +198,7 @@
     "publisher": "DC COMICS",
     "year": "2012",
     "genre": 1,
+    "language": "english",
     "rate": {
       "totalUsers": 38,
       "percentages": {
@@ -209,6 +220,7 @@
     "publisher": "CLASSIC COMIC STORE LTD.",
     "year": "2014",
     "genre": 1,
+    "language": "english",
     "rate": {
       "totalUsers": 38,
       "percentages": {
@@ -230,6 +242,7 @@
     "publisher": "DARK HORSE",
     "year": "2011",
     "genre": 1,
+    "language": "english",
     "rate": {
       "totalUsers": 38,
       "percentages": {

@@ -662,3 +662,7 @@ body .no-padding {
   border-right-color:#ddd;
   border-width:8px;
 }
+section {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}

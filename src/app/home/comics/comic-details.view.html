@@ -1,145 +1,51 @@
 <i ng-show="!vm.comic" class="glyphicon glyphicon-lg glyphicon-refresh glyphicon-spin"></i>
-<div ng-show="vm.comic">
-  <div class="clearfix" style="padding-top: 20px"></div>
+
+<section ng-show="vm.comic">
   <div class="row">
-    <section class="share-buttons">
-    </section>
-
-    <section ng-show="vm.comic" class="comic-info">
-      <div class="row">
-        <div class="col-md-4">
-
-          <div class="thumbnail">
-            <img ng-src="{{vm.comic.imageUrl}}" alt="Comic's cover">
-          </div>
-
-          <div class="title-meta text-center">
-            <span>144 printed pages</span>
-            <span>{{vm.comic.year | uppercase }}</span>
-          </div>
-
-        </div>
-
-        <div class="col-md-8">
-          <div class="row">
-            <div class="col-md-10">
-              <h2>{{ vm.comic.title }}</h2>
-              <h5 class="subheader">Issue #32</h5>
-            </div>
-          </div>
-
-          <div class="row form-group">
-            <div class="col-md-12">
-              <div class="title-meta">
-                <span>
-               <a class="alt-dark" ng-href="#/publisher/{{vm.comic.publisher.id}}">{{ vm.comic.publisher.name }}</a>
-             </span>
-
-                <span>
-               ENGLISH
-             </span>
-
-              </div>
-            </div>
-
-            <div class="col-md-12">
-              <span><strong>Authors |</strong></span>
-
-              <span ng-repeat="author in vm.comic.authors">
-             <a class="artist alt-dark" ng-href="/artist/1329484203">{{author}}{{ $last || ',' }}</a>
-            </span>
-            </div>
-
-            <div class="col-md-12">
-              <span><strong>Ilustrators |</strong></span>
-
-              <span ng-repeat="illustrator in vm.comic.illustrators">
-                <a class="artist alt-dark" ng-href="/artist/1329484203">{{illustrator.name}}</a>,
-              </span>
-            </div>
-          </div>
-
-          <div class="row form-group">
-            <div class="col-md-12">
-              <span><strong>Similar |</strong></span>
-
-              <span ng-repeat="illustrator in vm.comic.illustrators">
-              <a class="artist alt-dark" ng-href="/artist/1329484203">{{illustrator.name}}</a>,
-            </span>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- ACTIONS -->
-        <div class="row">
-          <div class="col-md-5">
-            <form action="/borrow" method="post">
-              <input name="titleId" value="11337367" type="hidden">
-              <input name="contentId" value="11337367" type="hidden">
-              <button type="submit" class="btn btn-default">Préstamo
-              </button>
-              <div style="display: none;">
-                <input type="hidden" name="_sourcePage" value="WF0BAXWIRBKwR2EQWdjYkVx6wAq_W8Diu2HDoOgUkfIy5ej4NCINgg==">
-                <input type="hidden" name="__fp" value="bjOimUab-ak=">
-              </div>
-            </form>
-          </div>
-
-          <div class="row-md-7">
-
-          </div>
-        </div>
+    <div class="col-md-4 text-center">
+      <div class="thumbnail">
+        <img ng-src="{{vm.comic.imageUrl}}" alt="Comic's cover">
       </div>
-
-      {{ vm.comic.description }}
-
-  </div>
-
-  <section class="similar-comics">
-    <div class="container">
-
-      <div class="row">
-        <div class="col-xs-12 col-md-6">
-          <div class="well well-sm">
-            <div class="row">
-              <div class="col-xs-12 col-md-6 text-center">
-                <h1 class="rating-num">
-                {{ vm.comic.rate.avg | number:2 }}</h1>
-                <div class="rating">
-                  <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
-                </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
-                </span><span class="glyphicon glyphicon-star-empty"></span>
-                </div>
-                <div>
-                  <span class="glyphicon glyphicon-user"></span>{{ vm.comic.rate.totalUsers }} total
-                </div>
-              </div>
-              <div class="col-xs-12 col-md-6">
-                <div class="row rating-desc">
-
-                  <div class="col-xs-3 col-md-3 text-right" ng-repeat-start="(key, percentage) in vm.comic.rate.percentages">
-                    <span class="glyphicon glyphicon-star"></span>{{key}}
-                  </div>
-                  <div class="col-xs-8 col-md-9" ng-repeat-end>
-                    <uib-progressbar class="progress-striped" value="percentage" type="warning">
-                      <b>{{percentage}}%</b>
-                    </uib-progressbar>
-                  </div>
-
-                </div>
-                <!-- end row -->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <span class="text-muted">{{vm.comic.year | uppercase }}</span>
     </div>
-  </section>
+
+    <div class="col-md-8">
+      <h2>{{ vm.comic.title }}</h2>
+      <p><span>{{ vm.comic.language | uppercase }}</span></p>
 
 
-  <hr/>
+      <p>
+        <span><strong>Authors |</strong></span>
+
+        <span ng-repeat="author in vm.comic.authors">
+           <a class="artist alt-dark" ng-href="/artist/1329484203">{{author}}{{ $last || ',' }}</a>
+         </span>
+      </p>
+
+      <p>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+
+            <rate-card comic="vm.comic"></rate-card>
+          </div>
+        </div>
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<section class="comic-description">
+  <h3>Description</h3>
+  <p> {{ vm.comic.description }}</p>
+</section>
+
+<section class="comic-comments">
+  <h3>User comments</h3>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
 
   <comments comic="vm.comic"></comments>
-
-</div>
+    </div>
+  </div>
+</section>

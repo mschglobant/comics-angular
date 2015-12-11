@@ -1,22 +1,33 @@
-<div class="row user-comment" ng-repeat="comment in comic.comments">
-  <div class="col-sm-1">
-    <div class="thumbnail">
-      <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-    </div>
-  </div>
+<div class="row user-comments" ng-show="comic">
+  <div class="col-md-12">
 
-  <div class="col-sm-5">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <strong>{{comment.username}}</strong> <span class="text-muted">commented on {{comment.timestamp | date}}</span>
-      </div>
-      <div class="panel-body">
-        {{comment.comment}}
+    <div class="row">
+      <div class="center-block text-center">
+        <uib-pagination boundary-links="true" total-items="comic.comments.length" items-per-page="pagination.itemsPerPage" ng-model="pagination.currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
       </div>
     </div>
+
+    <div class="row user-comment" ng-repeat="comment in pagination.getCurrentElements(comic.comments)">
+      <div class="col-sm-1 col-md-1">
+        <div class="thumbnail">
+          <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+        </div>
+      </div>
+
+      <div class="col-sm-5 col-md-11">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <strong>{{comment.username}}</strong> <span class="text-muted">commented on {{comment.timestamp | date}}</span>
+          </div>
+          <div class="panel-body">
+            {{comment.comment}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="clear-fix"></div>
+
+    <comment-box comic="comic"></comment-box>
   </div>
 </div>
-
-<div class="clear-fix"></div>
-
-<comment-box comic="comic"></comment-box>
