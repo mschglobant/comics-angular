@@ -1,5 +1,6 @@
-/* global angular */
+/*global angular */
 (function () {
+  'use strict';
 
   angular.module('app')
     .directive('usernameAvailable', function ($timeout, $q, authentication) {
@@ -20,7 +21,7 @@
 
           };
         }
-      }
+      };
     });
 
 }());

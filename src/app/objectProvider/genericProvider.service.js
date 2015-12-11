@@ -49,16 +49,16 @@
         url: '../api/' + type + 's.json'
       }).then(successCallback, errorCallback);
 
-      ///////
-      function successCallback(response) {
-        storage[prefix + type] = JSON.stringify(response.data);
-        deferred.resolve(storage[prefix + type]);
-      }
+    }
 
-      function errorCallback(response) {
-        deferred.reject("Failed to fetch " + type);
-      }
+    ///////
+    function successCallback(response) {
+      storage[prefix + type] = JSON.stringify(response.data);
+      deferred.resolve(storage[prefix + type]);
+    }
 
+    function errorCallback(response) {
+      deferred.reject("Failed to fetch " + type);
     }
 
     return deferred.promise;

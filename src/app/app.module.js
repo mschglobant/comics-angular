@@ -1,7 +1,7 @@
 /*global angular */
 (function () {
-    "use strict";
+  'use strict';
 
-    angular.module("app", ['ngRoute', 'ui.bootstrap', 'comicsHome', 'ngStorage']);
+  angular.module("app", ['ngRoute', 'ui.bootstrap', 'comicsHome', 'ngStorage']);
 
 }());

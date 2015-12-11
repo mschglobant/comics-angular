@@ -1,5 +1,4 @@
 /*global angular */
-
 function UserAuthenticationError(message) {
   this.name = "UserAuthenticationError";
   this.message = (message || "");
@@ -10,60 +9,53 @@ UserAuthenticationError.prototype = Error.prototype;
   'use strict';
 
   function authenticationService(userProvider) {
-    this.login = _login;
-    this.logout = _logout;
 
-    this.isLoggedIn = _isLoggedIn;
-    this.getLoggedUser = _getLoggedUser;
-
-    this.userExist = userExist;
-
-    if (!sessionStorage["loggedUser"]) {
-      sessionStorage["loggedUser"] = "";
+    if (!sessionStorage.loggedUser) {
+      sessionStorage.loggedUser = "";
     }
 
-    function _login(username, password) {
+    this.login = function (username, password) {
 
       return userProvider.findBy({
         username: username
       }).then(function (search) {
-        if (search.length != 1) {
+        if (search.length !== 1) {
           throw new UserAuthenticationError("Invalid credentials");
         }
 
         var user = search[0];
 
-        if (password != user.password) {
+        if (password !== user.password) {
           throw new UserAuthenticationError("Invalid credentials");
         }
 
-        sessionStorage["loggedUser"] = JSON.stringify(user);
+        sessionStorage.loggedUser = JSON.stringify(user);
 
         return user;
-      }, function (r) { debugger;});
+      }, function (r) {});
 
-    }
-
-    function _logout() {
-      sessionStorage["loggedUser"] = "";
     };
 
-    function _isLoggedIn() {
-      return sessionStorage["loggedUser"] !== "";
+    this.logout = function () {
+      sessionStorage.loggedUser = "";
     };
 
-    function _getLoggedUser() {
-      return JSON.parse(sessionStorage["loggedUser"]);
+    this.isLoggedIn = function () {
+      return sessionStorage.loggedUser !== "";
     };
 
-    function userExist(user) {
+    this.getLoggedUser = function () {
+      return JSON.parse(sessionStorage.loggedUser);
+    };
+
+    this.userExist = function (user) {
       return userProvider.findBy({
         username: user
       }).then(function (search) {
         return search.length > 0;
       });
 
-    }
+    };
 
   }
 
