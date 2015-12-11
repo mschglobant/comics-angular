@@ -5,9 +5,7 @@
           <h1 class="rating-num">
             {{ comic.rate.avg | number:2 }}</h1>
           <div class="rating">
-            <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
-            </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
-            </span><span class="glyphicon glyphicon-star-empty"></span>
+            <uib-rating ng-model="comic.rate.avg" max="5" readonly="true" aria-labelledby="default-rating"></uib-rating>
           </div>
           <div>
             <span class="glyphicon glyphicon-user"></span>{{ comic.rate.totalUsers }} total
