@@ -1,27 +1,29 @@
-<div class="row">
-  <div class="col-sm-8 col-sm-offset-2">
+<section class="login">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
 
-    <uib-alert ng-if="alert.hasFlash" type="{{alert.type}}" close="alert.close()">{{alert.message}}</uib-alert>
+      <uib-alert ng-if="alert.hasFlash" type="{{alert.type}}" close="alert.close()">{{alert.message}}</uib-alert>
 
-    <form name="signinForm" class="form-signin" ng-submit="signinForm.$valid && vm.doLogin()" novalidate>
-      <h2 class="form-signin-heading">Please sign in</h2>
-      <label for="loginUsername" class="sr-only">Username</label>
-      <div ng-class="{ 'has-error': signinForm.username.$dirty && signinForm.username.$invalid }">
-        <input type="text" name="username" id="loginUsername" class="form-control" placeholder="Username" ng-model="vm.username" required autocomplete="off" autofocus>
-      </div>
-      <label for="loginPassword" class="sr-only">Password</label>
-      <input type="password" id="loginPassword" class="form-control" placeholder="Password" ng-model="vm.password" required>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" ng-model="vm.rememberme"> Remember me
-        </label>
-      </div>
+      <form name="signinForm" class="form-signin" ng-submit="signinForm.$valid && vm.doLogin()" novalidate>
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="loginUsername" class="sr-only">Username</label>
+        <div ng-class="{ 'has-error': signinForm.username.$dirty && signinForm.username.$invalid }">
+          <input type="text" name="username" id="loginUsername" class="form-control" placeholder="Username" ng-model="vm.username" required autocomplete="off" autofocus>
+        </div>
+        <label for="loginPassword" class="sr-only">Password</label>
+        <input type="password" id="loginPassword" class="form-control" placeholder="Password" ng-model="vm.password" required>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" ng-model="vm.rememberme"> Remember me
+          </label>
+        </div>
 
-      <div class="form-actions">
-        <button class="btn btn-lg btn-primary btn-block" ng-disabled="signinForm.$invalid || vm.dataLoading" type="submit">Sign in <i ng-show="vm.dataLoading" class="glyphicon glyphicon-refresh glyphicon-spin"></i></button>
+        <div class="form-actions">
+          <button class="btn btn-lg btn-primary btn-block" ng-disabled="signinForm.$invalid || vm.dataLoading" type="submit">Sign in <i ng-show="vm.dataLoading" class="glyphicon glyphicon-refresh glyphicon-spin"></i></button>
 
-      </div>
+        </div>
 
-      <p class="text-center">New in Comics Site? Please, <a href="#/signup">Signup</a></p>
+        <p class="text-center">New in Comics Site? Please, <a href="#/signup">Signup</a></p>
+    </div>
   </div>
-</div>
+</section>

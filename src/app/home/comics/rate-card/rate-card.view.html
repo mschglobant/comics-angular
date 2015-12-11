@@ -20,8 +20,8 @@
               <span class="glyphicon glyphicon-star"></span>{{key}}
             </div>
             <div class="col-xs-8 col-md-9" ng-repeat-end>
-              <uib-progressbar class="progress-striped" value="percentage" type="warning">
-                <b>{{percentage}}%</b>
+              <uib-progressbar class="progress-striped" value="(percentage*100)/(comic.rate.totalUsers)" type="warning">
+                <b>{{((percentage*100)/(comic.rate.totalUsers)) | number:2}}%</b>
               </uib-progressbar>
             </div>
 

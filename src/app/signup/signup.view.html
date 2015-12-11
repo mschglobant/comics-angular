@@ -1,58 +1,60 @@
-<div class="container">
-  <div class="col-md-6 col-md-offset-3">
+<section class="signup-form">
+  <div class="container">
+    <div class="col-md-6 col-md-offset-3">
 
-    <uib-alert ng-if="alert.hasFlash" type="{{alert.type}}" close="alert.close()">{{alert.message}}</uib-alert>
+      <uib-alert ng-if="alert.hasFlash" type="{{alert.type}}" close="alert.close()">{{alert.message}}</uib-alert>
 
-    <h2>Register</h2>
-    <form name="form" ng-submit="vm.register()" role="form" novalidate>
+      <h2>Register</h2>
+      <form name="form" ng-submit="vm.register()" role="form" novalidate>
 
-      <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && !form.firstName.$valid }">
-        <label for="firstName">First name</label>
-        <input type="text" name="firstName" id="firstName" class="form-control" ng-model="vm.user.firstName" autofocus/>
-      </div>
+        <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && !form.firstName.$valid }">
+          <label for="firstName">First name</label>
+          <input type="text" name="firstName" id="firstName" class="form-control" ng-model="vm.user.firstName" autofocus/>
+        </div>
 
-      <div class="form-group" ng-class="{ 'has-error': form.lastName.$dirty && !form.lastName.$valid }">
-        <label for="lastName">Last name</label>
-        <input type="text" name="lastName" id="Text1" class="form-control" ng-model="vm.user.lastName" />
-      </div>
+        <div class="form-group" ng-class="{ 'has-error': form.lastName.$dirty && !form.lastName.$valid }">
+          <label for="lastName">Last name</label>
+          <input type="text" name="lastName" id="Text1" class="form-control" ng-model="vm.user.lastName" />
+        </div>
 
-      <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && !form.email.$valid }">
-        <label for="email">Email address</label>
-        <input type="email" name="email" id="email" class="form-control" ng-model="vm.user.email" ng-model-options="{ updateOn: 'blur' }" required />
-        <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">Email is required</span>
-        <span ng-show="form.email.$dirty && form.email.$error.email" class="help-block">Enter valid email address</span>
-      </div>
+        <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && !form.email.$valid }">
+          <label for="email">Email address</label>
+          <input type="email" name="email" id="email" class="form-control" ng-model="vm.user.email" ng-model-options="{ updateOn: 'blur' }" required />
+          <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">Email is required</span>
+          <span ng-show="form.email.$dirty && form.email.$error.email" class="help-block">Enter valid email address</span>
+        </div>
 
-      <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && !form.username.$pending && !form.username.$valid, 'has-feedback': form.username.$pending.usernameExists }">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" class="form-control" ng-model="vm.user.username" ng-pattern="/^[a-zA-Z0-9]*$/" ng-model-options="{ updateOn: 'blur' }" username-available ng-model-options="{ updateOn: 'blur' }" required />
-        <i ng-show="form.username.$pending.usernameExists" class="glyphicon glyphicon-refresh glyphicon-spin form-control-feedback"></i>
-        <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
-        <span ng-show="form.username.$dirty && form.username.$error.pattern" class="help-block">Username only can contain alphanumeric characters</span>
-        <span ng-show="form.username.$dirty && form.username.$error.usernameExists" class="help-block">Username already taken!</span>
-      </div>
+        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && !form.username.$pending && !form.username.$valid, 'has-feedback': form.username.$pending.usernameExists }">
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" class="form-control" ng-model="vm.user.username" ng-pattern="/^[a-zA-Z0-9]*$/" ng-model-options="{ updateOn: 'blur' }" username-available ng-model-options="{ updateOn: 'blur' }" required />
+          <i ng-show="form.username.$pending.usernameExists" class="glyphicon glyphicon-refresh glyphicon-spin form-control-feedback"></i>
+          <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+          <span ng-show="form.username.$dirty && form.username.$error.pattern" class="help-block">Username only can contain alphanumeric characters</span>
+          <span ng-show="form.username.$dirty && form.username.$error.usernameExists" class="help-block">Username already taken!</span>
+        </div>
 
-      <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && !form.password.$valid }">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" class="form-control" ng-model="vm.user.password" ng-minlength="7" ng-pattern="/^[a-zA-Z0-9]*$/" ng-model-options="{ updateOn: 'blur' }" required />
-        <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
-        <span ng-show="form.password.$error.minlength" class="help-block">Password can't be shorter than 7 characters</span>
-        <span ng-show="form.password.$error.pattern" class="help-block">Password only can contain alphanumeric characters</span>
-      </div>
+        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && !form.password.$valid }">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" class="form-control" ng-model="vm.user.password" ng-minlength="7" ng-pattern="/^[a-zA-Z0-9]*$/" ng-model-options="{ updateOn: 'blur' }" required />
+          <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+          <span ng-show="form.password.$error.minlength" class="help-block">Password can't be shorter than 7 characters</span>
+          <span ng-show="form.password.$error.pattern" class="help-block">Password only can contain alphanumeric characters</span>
+        </div>
 
-      <div class="form-group" ng-class="{ 'has-error': form.password2.$dirty && !form.password2.$valid }">
-        <label for="password2">Repeat Password</label>
-        <input type="password" name="password2" id="password" class="form-control" ng-model="vm.user.password2" pw-check="password" required />
-        <span ng-show="form.password2.$dirty && form.password2.$error.required" class="help-block">Confirm Password is required</span>
-        <span ng-show="form.password2.$dirty && form.password2.$error.pwmatch" class="help-block">Passwords don't match</span>
-      </div>
+        <div class="form-group" ng-class="{ 'has-error': form.password2.$dirty && !form.password2.$valid }">
+          <label for="password2">Repeat Password</label>
+          <input type="password" name="password2" id="password" class="form-control" ng-model="vm.user.password2" pw-check="password" required />
+          <span ng-show="form.password2.$dirty && form.password2.$error.required" class="help-block">Confirm Password is required</span>
+          <span ng-show="form.password2.$dirty && form.password2.$error.pwmatch" class="help-block">Passwords don't match</span>
+        </div>
 
-      <div class="form-actions">
-        <button type="submit" ng-disabled="form.$invalid || form.$pending || vm.dataLoading" class="btn btn-primary">Register</button>
-        <img ng-if="vm.dataLoading" src="assets/images/loading.gif" />
-        <a href="#/login" class="btn btn-link">Cancel</a>
-      </div>
-    </form>
+        <div class="form-actions">
+          <button type="submit" ng-disabled="form.$invalid || form.$pending || vm.dataLoading" class="btn btn-primary">Register</button>
+          <img ng-if="vm.dataLoading" src="assets/images/loading.gif" />
+          <a href="#/login" class="btn btn-link">Cancel</a>
+        </div>
+      </form>
+    </div>
+
   </div>
-
-</div>
+</section>

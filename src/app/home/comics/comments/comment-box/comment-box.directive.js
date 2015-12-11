@@ -7,7 +7,7 @@
     .directive("commentBox", commentBox);
 
   // directive
-  function commentBox () {
+  function commentBox() {
     return {
       scope: {
         comic: '='
@@ -19,31 +19,40 @@
 
   // controller
   CommentBoxController.$inject = ['$scope', 'authentication', 'comicsProvider'];
-  function CommentBoxController ($scope, authentication, comicsProvider) {
-    $scope.newComment = {};
 
-    $scope.tryToSubmit = false;
+  function CommentBoxController($scope, authentication, comicsProvider) {
 
-    $scope.check = function () {
-      $scope.tryToSubmit = true;
-      return $scope.newComment.comment && $scope.newComment.rate;
-    }
-    $scope.addComment = function () {
-      $scope.disable = true;
-      $scope.newComment.username = authentication.getLoggedUser().username;
-      $scope.newComment.timestamp = new Date();
+    $scope.loggedIn = authentication.isLoggedIn();
 
-      $scope.comic.comments.push($scope.newComment);
-      $scope.comic.rate.totalUsers +=1;
-      $scope.comic.rate.percentages[$scope.newComment.rate] +=1;
-
-      comicsProvider.persist($scope.comic);
-
+    if ($scope.loggedIn) {
       $scope.newComment = {};
+
       $scope.tryToSubmit = false;
-      $scope.form.$setPristine();
-      $scope.disable = false;
+
+      $scope.check = function () {
+        $scope.tryToSubmit = true;
+        return $scope.newComment.comment && $scope.newComment.rate;
+      }
+      $scope.addComment = function () {
+        $scope.disable = true;
+        $scope.newComment.username = authentication.getLoggedUser().username;
+        $scope.newComment.timestamp = new Date();
+
+        $scope.comic.comments.push($scope.newComment);
+        $scope.comic.rate.totalUsers += 1;
+        $scope.comic.rate.percentages[$scope.newComment.rate] += 1;
+
+        comicsProvider.persist($scope.comic);
+
+        $scope.newComment = {};
+        $scope.tryToSubmit = false;
+        $scope.form.$setPristine();
+        $scope.disable = false;
+      }
     }
+
+
+
   }
 
 }());

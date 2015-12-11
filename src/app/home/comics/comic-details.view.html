@@ -1,51 +1,52 @@
 <i ng-show="!vm.comic" class="glyphicon glyphicon-lg glyphicon-refresh glyphicon-spin"></i>
-
 <section ng-show="vm.comic">
-  <div class="row">
-    <div class="col-md-4 text-center">
-      <div class="thumbnail">
-        <img ng-src="{{vm.comic.imageUrl}}" alt="Comic's cover">
-      </div>
-      <span class="text-muted">{{vm.comic.year | uppercase }}</span>
-    </div>
 
-    <div class="col-md-8">
-      <h2>{{ vm.comic.title }}</h2>
-      <p><span>{{ vm.comic.language | uppercase }}</span></p>
-
-
-      <p>
-        <span><strong>Authors |</strong></span>
-
-        <span ng-repeat="author in vm.comic.authors">
-           <a class="artist alt-dark" ng-href="/artist/1329484203">{{author}}{{ $last || ',' }}</a>
-         </span>
-      </p>
-
-      <p>
-        <div class="row">
-          <div class="col-md-8 col-md-offset-2">
-
-            <rate-card comic="vm.comic"></rate-card>
-          </div>
+  <section>
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <div class="thumbnail">
+          <img ng-src="{{vm.comic.imageUrl}}" alt="Comic's cover">
         </div>
-      </p>
+        <span class="text-muted">{{vm.comic.year | uppercase }}</span>
+      </div>
 
+      <div class="col-md-8">
+        <h2>{{ vm.comic.title }}</h2>
+        <p><span>{{ vm.comic.language | uppercase }}</span></p>
+
+        <p>
+          <span><strong>Authors |</strong></span>
+
+          <span ng-repeat="author in vm.comic.authors">
+            <a class="artist alt-dark" ng-href="/artist/1329484203">{{author}}{{ $last || ',' }}</a>
+          </span>
+        </p>
+
+        <p>
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <rate-card comic="vm.comic"></rate-card>
+            </div>
+          </div>
+        </p>
+
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="comic-description">
-  <h3>Description</h3>
-  <p> {{ vm.comic.description }}</p>
-</section>
+  <section class="comic-description">
+    <h3 class="page-header">Description</h3>
+    <p> {{ vm.comic.description }}</p>
+  </section>
 
-<section class="comic-comments">
-  <h3>User comments</h3>
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+  <section class="comic-comments">
+    <h3 class="page-header">User comments</h3>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
 
-  <comments comic="vm.comic"></comments>
+        <comments comic="vm.comic"></comments>
+      </div>
     </div>
-  </div>
+  </section>
+
 </section>
